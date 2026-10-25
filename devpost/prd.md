@@ -73,3 +73,6 @@ Owner requested tablet controls underneath the farm image. At viewport widths760
 
 ## Larger tablet farm — 2026-10-25
 Owner requested the tablet farm take more space than the controls. Tablet760–1199px scene now occupies62% of viewport height; the shorter lesson/code windows remain underneath and independently scrollable. The farm image fills the scene with a centered cover crop instead of portrait letterboxing; artwork-relative Mochi placement follows the crop. Focus-on-farm still reveals the full contained illustration. Phone and desktop layouts are unchanged. This supersedes the prior48%-height contained tablet scene. Commit only while organization push access is blocked; not published.
+
+## Responsive homepage/tablet release — 2026-10-25
+The owner approved publication of the unified homepage and larger tablet farm. Push succeeded after connector installation; Pages run40223906581 reports Success for release ae516f5 (application dbb96b0). Earlier unpublished/push-blocked notes are superseded. Future edits remain commit/push-only until publication is explicitly requested.

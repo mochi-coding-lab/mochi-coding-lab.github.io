@@ -41,7 +41,7 @@ This is the consolidated current checklist. Older dated checklists are history a
 - [ ] Confirm submission is complete. Do not infer submission from having a live website.
 
 ## Current release distinction
-Last confirmed application deployment: 80d3b82, GitHub Pages run40095257989 succeeded on2026-10-24 (responsive lesson). Repository now mochi-coding-lab/mochi-coding-lab.github.io; configured site https://mochi-coding-lab.github.io/. Unified homepage changes remain unpublished. See resume.md for verification limits.
+Last confirmed application deployment: ae516f5 on2026-10-25, Pages run40223906581 succeeded (https://github.com/mochi-coding-lab/mochi-coding-lab.github.io/actions/runs/40223906581). Public files match tested dbb96b0: unified responsive homepage and larger tablet farm. Manual-only publishing restored; cloud direct Pages access remains blocked. Owner device review pending.
 
 ## Desktop sharpness correction — 2026-10-24
 - [x] Original sharp island art stays visible beneath water-only animation.
@@ -109,3 +109,10 @@ Owner resumed layout editing and approved the current phone scene/sheet with com
 - [x] Tablet scene takes62% of viewport; farm fills the region, controls underneath scroll.
 - [ ] Owner review and publication; organization push access remains blocked.
 - [x] Chromium760×900,820×1180,1024×768,1180×820,1199×820: all five activities pass; Run remains clickable in shorter scrollable workspace.
+
+## Responsive homepage/tablet deployment — 2026-10-25
+- [x] Organization connector installed by owner; push access verified.
+- [x] Push all three saved application commits and publish with explicit owner authorization.
+- [x] Pages run40223906581 reports Success; source/public unchanged from tested dbb96b0.
+- [x] Restore workflow_dispatch-only after one-time release.
+- [ ] Owner live-device review and real account/OAuth checks.

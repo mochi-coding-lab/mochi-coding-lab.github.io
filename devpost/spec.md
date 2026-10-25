@@ -61,3 +61,6 @@ Owner requested tablet controls underneath the farm image. At viewport widths760
 
 ## Larger tablet farm — 2026-10-25
 Owner requested the tablet farm take more space than the controls. Tablet760–1199px scene now occupies62% of viewport height; the shorter lesson/code windows remain underneath and independently scrollable. The farm image fills the scene with a centered cover crop instead of portrait letterboxing; artwork-relative Mochi placement follows the crop. Focus-on-farm still reveals the full contained illustration. Phone and desktop layouts are unchanged. This supersedes the prior48%-height contained tablet scene. Commit only while organization push access is blocked; not published.
+
+## Release/access update — 2026-10-25
+Organization Git push access verified after owner connector installation. Deployed application dbb96b0 via one-time commit-gated release ae516f5; Pages run40223906581 Success. Restored workflow_dispatch-only. API and direct Pages cloud access remain network-blocked, distinct from restored Git permission. Earlier unpublished status is historical.
