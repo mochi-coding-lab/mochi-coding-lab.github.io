@@ -41,7 +41,7 @@ This is the consolidated current checklist. Older dated checklists are history a
 - [ ] Confirm submission is complete. Do not infer submission from having a live website.
 
 ## Current release distinction
-Last confirmed application deployment: ae516f5 on2026-10-25, Pages run40223906581 succeeded (https://github.com/mochi-coding-lab/mochi-coding-lab.github.io/actions/runs/40223906581). Public files match tested dbb96b0: unified responsive homepage and larger tablet farm. Manual-only publishing restored; cloud direct Pages access remains blocked. Owner device review pending.
+Last confirmed application deployment:33d42e8 on2026-10-25, Pages run40224663297 Success. Public files match tested f82bf5a: original-detail full-resolution responsive map, plus previous unified homepage and tablet lesson. Manual-only publishing restored. Direct Pages cloud access blocked; owner device review pending.
 
 ## Desktop sharpness correction — 2026-10-24
 - [x] Original sharp island art stays visible beneath water-only animation.
@@ -122,3 +122,9 @@ Owner resumed layout editing and approved the current phone scene/sheet with com
 - [x] Lossless pixel equality with original artwork verified.
 - [x] Chromium320/390/680/768/1440 source selection, island controls, sound, Start and restoration/resize checks.
 - [ ] Publish this image-quality correction only on explicit owner request.
+
+## Full-resolution map release — 2026-10-25
+- [x] Owner explicitly requested deployment; Pages run40224663297 reports Success.
+- [x] Public asset and island-vision regression checks pass; release public files match tested f82bf5a.
+- [x] Restore manual-only publishing for future changes.
+- [ ] Owner live-device visual review.
