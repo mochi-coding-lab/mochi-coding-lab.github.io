@@ -128,3 +128,10 @@ Owner resumed layout editing and approved the current phone scene/sheet with com
 - [x] Public asset and island-vision regression checks pass; release public files match tested f82bf5a.
 - [x] Restore manual-only publishing for future changes.
 - [ ] Owner live-device visual review.
+
+## First-day farm redesign — 2026-10-25
+- [x] Read all30 PDF pages; inspect image-only IDE examples on page8.
+- [x] Record owner full-coverage, learner-choice and editable-scene decisions.
+- [x] Draft proposed source-to-activity mapping in lesson1-first-day-plan.md.
+- [ ] Review sequence, exact interactions, runtime and art changes before implementation.
+- [ ] Implement and test full-topic lesson; current five activities remain live.
