@@ -1,6 +1,8 @@
 name: Deploy prototype to GitHub Pages
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -14,6 +16,7 @@ concurrency:
 
 jobs:
   deploy:
+    if: github.event_name == 'workflow_dispatch' || github.event.head_commit.message == 'Publish approved responsive homepage and tablet farm dbb96b0'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
