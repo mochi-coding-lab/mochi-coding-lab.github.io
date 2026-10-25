@@ -135,3 +135,6 @@ Owner resumed layout editing and approved the current phone scene/sheet with com
 - [x] Draft proposed source-to-activity mapping in lesson1-first-day-plan.md.
 - [ ] Review sequence, exact interactions, runtime and art changes before implementation.
 - [ ] Implement and test full-topic lesson; current five activities remain live.
+
+## All-activity design preview — 2026-10-25
+A separate interactive design preview now covers all12 proposed activities: little-acres/lesson1-design-preview.html (excluded from public build). Navigation and before/after simulations support farm-name, crop, seed-count and bed-size choices. It does not execute Python or validate learning; APIs, gate/soil/sign/chest overlays, notebook and object inspector are concepts, not final features. Existing live lesson unchanged. Chromium checks cover all12 views, custom name/seed quantity and phone/tablet overflow without JS errors. Review export /tmp/mochi-first-day-interactive-preview.html embeds assets; two six-activity overview sheets and screen-size previews are local artifacts.
