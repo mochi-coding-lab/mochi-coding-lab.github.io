@@ -116,3 +116,9 @@ Owner resumed layout editing and approved the current phone scene/sheet with com
 - [x] Pages run40223906581 reports Success; source/public unchanged from tested dbb96b0.
 - [x] Restore workflow_dispatch-only after one-time release.
 - [ ] Owner live-device review and real account/OAuth checks.
+
+## Full-resolution responsive map — 2026-10-25
+- [x] Full1536px original-detail map and restoration layer at all viewport sizes.
+- [x] Lossless pixel equality with original artwork verified.
+- [x] Chromium320/390/680/768/1440 source selection, island controls, sound, Start and restoration/resize checks.
+- [ ] Publish this image-quality correction only on explicit owner request.

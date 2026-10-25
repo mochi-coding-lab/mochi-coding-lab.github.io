@@ -56,3 +56,6 @@ Owner requested the tablet farm take more space than the controls. Tablet760–1
 
 ## Responsive homepage/tablet release — 2026-10-25
 The owner approved publication of the unified homepage and larger tablet farm. Push succeeded after connector installation; Pages run40223906581 reports Success for release ae516f5 (application dbb96b0). Earlier unpublished/push-blocked notes are superseded. Future edits remain commit/push-only until publication is explicitly requested.
+
+## Full-resolution responsive map — 2026-10-25
+Owner reported poor live map quality. Removed the phone picture source advertised as360px: it selected480–900px artwork for a1120px pannable/zoomable scene. All viewport sizes now use1536×1024 original-detail lossless WebP for both abandoned and restored map imagery; partial restoration uses the same full-detail restored asset. Original artwork unchanged; lossless decoded RGB pixels verified against PNG sources. Vision toggle shares the same high-resolution paths. Build allowlist updated, phone/desktop source selection and interactions checked. Asset sizes are about2.6/2.8MB; no claim of added detail beyond the original resolution. Commit/push only; this correction needs explicit publication approval.

@@ -21,12 +21,9 @@
 <div class="living-controls"><button type="button" id="motionToggle" aria-pressed="true">Pause motion</button><button type="button" id="soundToggle" aria-pressed="true">Sound on · mute</button><span id="ambienceStatus" role="status">Sound is on · starts with your first tap.</span></div>
 <p class="journey-progress" id="journeyProgress" role="status">Island 1 · 0 of 5 activities complete</p>
 <section class="world" aria-label="Five-island journey map">
-<picture class="map-picture">
-<source id="phoneMapSource" media="(max-width:680px)" srcset="art/world-map-abandoned-480.webp 480w, art/world-map-abandoned-720.webp 720w, art/world-map-abandoned-900.webp 900w" sizes="360px">
-<img class="map-art" src="art/world-map-abandoned.png" fetchpriority="high" decoding="async" alt="Five abandoned islands in a turquoise sea: damaged cottages, a broken mill, an empty greenhouse, an unlit lighthouse and a barren orchard.">
-</picture>
+<img class="map-art" src="art/world-map-abandoned-full.webp" fetchpriority="high" decoding="async" alt="Five abandoned islands in a turquoise sea: damaged cottages, a broken mill, an empty greenhouse, an unlit lighthouse and a barren orchard.">
 <canvas class="living-water" id="livingWater" aria-hidden="true" hidden></canvas>
-<img class="restored-first-island" id="firstIslandRestored" src="art/world-map-preview.png" srcset="art/world-map-preview-phone.jpg 900w, art/world-map-preview.png 1536w" sizes="(max-width: 680px) 100vw, 1536px" alt="">
+<img class="restored-first-island" id="firstIslandRestored" src="art/world-map-preview-full.webp" alt="">
 <div class="coastal-life" aria-hidden="true"><div class="seabird bird-one" style="--delay:-4s;--bird-scale:1"><svg viewBox="0 0 64 32"><path class="wing-left" d="M32 18 Q18 0 2 11 Q18 7 32 21"/><path class="wing-right" d="M32 18 Q46 0 62 11 Q46 7 32 21"/><ellipse cx="32" cy="19" rx="3" ry="6"/></svg></div><div class="seabird bird-two" style="--delay:-14s;--bird-scale:0.72"><svg viewBox="0 0 64 32"><path class="wing-left" d="M32 18 Q18 0 2 11 Q18 7 32 21"/><path class="wing-right" d="M32 18 Q46 0 62 11 Q46 7 32 21"/><ellipse cx="32" cy="19" rx="3" ry="6"/></svg></div><div class="seabird bird-three" style="--delay:-25s;--bird-scale:0.55"><svg viewBox="0 0 64 32"><path class="wing-left" d="M32 18 Q18 0 2 11 Q18 7 32 21"/><path class="wing-right" d="M32 18 Q46 0 62 11 Q46 7 32 21"/><ellipse cx="32" cy="19" rx="3" ry="6"/></svg></div><span class="wind-leaf leaf-one"></span><span class="wind-leaf leaf-two"></span><span class="wind-leaf leaf-three"></span></div>
 <div class="sunshine" aria-hidden="true"></div>
 <svg class="island-shadows" viewBox="0 0 1536 1024" aria-hidden="true"><defs><filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="9"/></filter></defs><g filter="url(#softShadow)"><path d="M92 198 L135 109 238 42 442 33 555 112 624 206 637 285 545 340 374 353 211 304 109 261Z"/><path d="M551 419 L589 333 701 271 856 273 972 355 1043 432 1060 500 954 559 778 583 644 535 571 485Z"/><path d="M946 217 L999 122 1102 34 1211 22 1337 90 1395 188 1459 238 1496 327 1406 385 1261 407 1115 375 1008 314Z"/><path d="M943 684 L1001 582 1090 521 1243 497 1390 545 1462 649 1514 727 1478 825 1383 913 1214 939 1051 860 965 780Z"/></g></svg>
@@ -47,7 +44,7 @@
 </dialog>
 <footer><a href="world-map-audio-credits.html">Nature audio credits</a><span>MOCHI · A BEGINNER PYTHON ADVENTURE</span><span>Guest progress saves in this browser.</span></footer>
 </main>
-<script src="world-map-restoration.js?v=20261025-responsive"></script>
+<script src="world-map-restoration.js?v=20261025-sharp-map"></script>
 <script src="world-map-island-details.js"></script>
 <script src="world-map-popup.js"></script>
 <!-- Phone map is mounted before account/media dependencies so it stays playable. -->
