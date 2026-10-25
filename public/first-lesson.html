@@ -260,12 +260,15 @@ body.dock-resizing{cursor:ns-resize;user-select:none}
 }
 /* Tablets: full-width farm with the lesson and code windows underneath. */
 @media(min-width:760px) and (max-width:1199px){
-  :root{--tablet-scene-height:min(48dvh,calc((100vw - 24px) * 2 / 3))}
+  :root{--tablet-scene-height:62dvh}
   .world{right:12px;bottom:auto;height:var(--tablet-scene-height)}
+  .world>img{object-fit:cover;object-position:center}
+  body.focus-mode .world>img{object-fit:contain}
   .lesson-dock{top:calc(var(--tablet-scene-height) + 24px);left:12px;right:12px;bottom:12px;width:auto;flex-direction:row;align-items:stretch}
   .lesson-panel{width:40%;padding:10px;flex:0 0 40%;max-height:100%;height:100%}
   .code-panel{flex:1;height:100%;min-width:0}
-  .code-main,.code-side{min-width:0}
+  .code-main,.code-side{min-width:0;flex:0 0 auto}
+  #code{height:120px;flex:none}
   .focus-float{left:50%}
   body.focus-mode .world{height:auto;bottom:12px}
   body .mochi,body.focus-mode .mochi{position:fixed;left:var(--mochi-x,54%);top:calc(var(--mochi-y,35%) + var(--mochi-foot-padding,0px));width:var(--mochi-size,90px)}
