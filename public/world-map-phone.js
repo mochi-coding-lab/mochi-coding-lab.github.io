@@ -110,9 +110,9 @@
   function syncProgress() {
     const text = progressEl?.textContent || '';
     const match = text.match(/(\d+)\s+of\s+(\d+)/i);
-    const current = match ? Number(match[1]) : 0;
     const total = match ? Number(match[2]) : 5;
-    const restored = /restored|complete/i.test(text) && current >= total;
+    const restored = /^1 island restored\b/i.test(text) || (!!match && /restored|complete/i.test(text) && Number(match[1]) >= total);
+    const current = restored ? total : match ? Number(match[1]) : 0;
     // The HUD always represents the playable island, not a locked island the
     // learner is merely inspecting. This keeps the primary action usable.
     const activeData = islandData[0];
@@ -155,7 +155,10 @@
   document.getElementById('phoneSheetClose')?.addEventListener('click', () => closeSheet(true));
   backdrop.addEventListener('click', () => closeSheet(true));
   document.querySelectorAll('[data-phone-island]').forEach(row => {
-    row.addEventListener('click', () => openIsland(Number(row.dataset.phoneIsland)));
+    row.addEventListener('click', event => {
+      event.stopPropagation();
+      openIsland(Number(row.dataset.phoneIsland));
+    });
   });
 
   document.getElementById('phoneStart')?.addEventListener('click', () => {
@@ -197,6 +200,11 @@
   if (soundEl) {
     new MutationObserver(syncSound).observe(soundEl, { attributes: true, attributeFilter: ['aria-pressed','data-audio-state'] });
   }
+
+  // A viewport change must not leave hidden phone overlays owning focus.
+  matchMedia('(max-width:680px)').addEventListener('change', event => {
+    if (!event.matches) closeSheet();
+  });
 
   syncProgress();
   syncSound();

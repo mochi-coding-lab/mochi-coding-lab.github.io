@@ -1,7 +1,7 @@
 ---
 doc: prd
 status: draft
-updated: 2026-10-24
+updated: 2026-10-25
 ---
 
 # Mochi — current product requirements
@@ -62,3 +62,8 @@ The phone map must actually initialize the existing coastal audio, not only show
 
 ### Approved responsive lesson release - 2026-10-24
 Owner approved tablet/desktop sidebar with full contained farm, and the screenshot-led phone layout: fixed farm scene above independent scrolling lesson/editor sheet, compact controls, 56px Mochi. Sidebar begins at 760px with 250-380px rail; below 760px uses phone scene/sheet. Supersedes older phone styling sizing in this release. Owner explicitly authorized commit, push and publish. Local Chrome reviewed at phone 466x790 and tablet 820x1180; public asset/script/progress checks pass. Remote manual-only Pages policy and other map/audio changes preserved during integration. Release verification pending deployment.
+
+## Unified responsive homepage — 2026-10-25
+Use one index.html for all screen sizes. At 680px and below retain the approved immersive phone map, pan/zoom, compact HUD, island sheet and Start action. Above that breakpoint retain the existing desktop presentation. Resize in place without navigation or duplicate controller initialization. Share progress, availability, sign-in and sound behavior; phone.html only forwards old links, preserving query/hash. Completed Island 1 must show restored state in the phone HUD. Scope is homepage consolidation, not lesson redesign. Commit/push only; owner publication approval is still required.
+
+Current hosting is the organization repository mochi-coding-lab/mochi-coding-lab.github.io at https://mochi-coding-lab.github.io/. Live browser verification and real-account OAuth redirect configuration remain distinct from local tests.

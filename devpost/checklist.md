@@ -1,7 +1,7 @@
 ---
 doc: checklist
 status: draft
-updated: 2026-10-24
+updated: 2026-10-25
 ---
 
 # Mochi — current progress and remaining work
@@ -41,7 +41,7 @@ This is the consolidated current checklist. Older dated checklists are history a
 - [ ] Confirm submission is complete. Do not infer submission from having a live website.
 
 ## Current release distinction
-Last confirmed application deployment: 9d2685e on 2026-10-24, GitHub Pages run 40092748325 succeeded. Includes the natural-farm/grid-only lesson with Mochi grounded outside the entrance gate, sharper desktop map and immediate audio startup attempts. Manual-only publishing restored for future changes. See resume.md for deployment evidence and limits.
+Last confirmed application deployment: 80d3b82, GitHub Pages run40095257989 succeeded on2026-10-24 (responsive lesson). Repository now mochi-coding-lab/mochi-coding-lab.github.io; configured site https://mochi-coding-lab.github.io/. Unified homepage changes remain unpublished. See resume.md for verification limits.
 
 ## Desktop sharpness correction — 2026-10-24
 - [x] Original sharp island art stays visible beneath water-only animation.
@@ -86,3 +86,15 @@ Owner resumed layout editing and approved the current phone scene/sheet with com
 - [x] Manual Pages deployment 40095257989 succeeded for 80d3b82.
 - [x] Live HTTP 200 and approved phone/tablet styling confirmed.
 - [x] Public asset/progress, audio, water fallback and island checks pass.
+
+## Unified responsive homepage — 2026-10-25
+- [x] One responsive index.html; remove phone-size redirect and duplicated phone markup/scripts.
+- [x] Preserve legacy phone.html links with query/hash forwarding.
+- [x] Chromium 320,390,680,768,1440 widths: map loads, no page overflow or JS errors; existing phone/desktop layouts retained.
+- [x] Phone island list/detail restrictions, pan/zoom, Start navigation and real browser sound mute/resume checked.
+- [x] Desktop screenshots at 768px and 1440px pixel-identical under reduced motion before/after merge.
+- [x] Phone→desktop→phone resize and old phone links checked.
+- [x] Partial/full progress HUD and restoration image source across resize checked.
+- [x] Public assets/progress, map-islands, nature-audio and water-fallback regression checks pass.
+- [ ] Owner review and explicit publication of unified homepage.
+- [ ] Real-device and signed-in/OAuth checks on the organization origin remain pending.

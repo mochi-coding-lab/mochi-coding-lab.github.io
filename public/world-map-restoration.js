@@ -33,6 +33,8 @@
  const vision=toggle.getAttribute('aria-pressed')!=='true';
  toggle.setAttribute('aria-pressed',String(vision));
  art.src=vision?'art/world-map-preview.png':'art/world-map-abandoned.png';
+ const phoneSource=document.getElementById('phoneMapSource');
+ if(phoneSource) phoneSource.srcset=vision?'art/world-map-preview-phone.jpg 900w':'art/world-map-abandoned-480.webp 480w, art/world-map-abandoned-720.webp 720w, art/world-map-abandoned-900.webp 900w';
  art.alt=vision?'Restoration art concept: the same five islands with repaired buildings, gardens and green trees.':startingAlt;
  toggle.textContent=vision?'Back to the starting world ↶':'See the restoration vision ✧';
  state.textContent=vision?'RESTORATION ART VISION · NOT EARNED PROGRESS':'STARTING WORLD · WAITING FOR RESTORATION';
