@@ -98,3 +98,9 @@ Owner resumed layout editing and approved the current phone scene/sheet with com
 - [x] Public assets/progress, map-islands, nature-audio and water-fallback regression checks pass.
 - [ ] Owner review and explicit publication of unified homepage.
 - [ ] Real-device and signed-in/OAuth checks on the organization origin remain pending.
+
+## Tablet lesson controls below the farm — 2026-10-25
+- [x] Tablet760–1199px: full-width farm above lesson/code windows; phone and desktop retain their layouts.
+- [x] Chromium760×900,820×1180,1024×768,1180×820,1199×820: farm above controls, no page overflow/JS errors, all five activities pass.
+- [x] Speech stays in the scene and Mochi follows the artwork ground point after tablet resize.
+- [ ] Owner review and explicit publication; GitHub push access remains to be resolved.

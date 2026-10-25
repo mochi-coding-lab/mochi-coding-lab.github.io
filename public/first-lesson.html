@@ -258,14 +258,24 @@ body.dock-resizing{cursor:ns-resize;user-select:none}
   body.focus-mode .world{right:12px}
   body.focus-mode .mochi{left:50%}
 }
-@media(min-width:760px) and (max-width:1100px){
-  .lesson-panel{padding:10px;flex-basis:38%;max-height:38%}
+/* Tablets: full-width farm with the lesson and code windows underneath. */
+@media(min-width:760px) and (max-width:1199px){
+  :root{--tablet-scene-height:min(48dvh,calc((100vw - 24px) * 2 / 3))}
+  .world{right:12px;bottom:auto;height:var(--tablet-scene-height)}
+  .lesson-dock{top:calc(var(--tablet-scene-height) + 24px);left:12px;right:12px;bottom:12px;width:auto;flex-direction:row;align-items:stretch}
+  .lesson-panel{width:40%;padding:10px;flex:0 0 40%;max-height:100%;height:100%}
+  .code-panel{flex:1;height:100%;min-width:0}
+  .code-main,.code-side{min-width:0}
+  .focus-float{left:50%}
+  body.focus-mode .world{height:auto;bottom:12px}
+  body .mochi,body.focus-mode .mochi{position:fixed;left:var(--mochi-x,54%);top:calc(var(--mochi-y,35%) + var(--mochi-foot-padding,0px));width:var(--mochi-size,90px)}
+  .mochi img{animation:none;filter:drop-shadow(0 3px 3px #172b2538)}
+  .variable-tag,.area-card{left:30%;top:calc(var(--tablet-scene-height) * .6)}
   .lesson-panel h1{font-size:22px}
   .lesson-top{flex-wrap:wrap;gap:6px}
   .lesson-tools{margin-left:auto;flex-wrap:wrap}
   .lesson-panel .task p{font-size:12px}
   .code-body{padding:8px}
-  .mochi{width:clamp(80px,11vw,120px)}
 }
 </style>
 
@@ -1065,7 +1075,7 @@ body.dock-resizing{cursor:ns-resize;user-select:none}
  const artwork = scene.querySelector('img');
  function placeMochi() {
   const root = document.documentElement.style;
-  const desktop = innerWidth > 1100;
+  const desktop = innerWidth >= 760;
   if (!phone.matches && !desktop) {
    ['--mochi-x','--mochi-y','--mochi-size','--mochi-foot-padding','--farm-grid-size'].forEach(name => root.removeProperty(name));
    return;
