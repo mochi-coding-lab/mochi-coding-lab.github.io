@@ -11,6 +11,8 @@ Scope boundary approved on 2026-10-26: beginner Python through visual farm activ
 ## Learning journey
 Mission before code. Entry walks Mochi into the grounds without requiring unfamiliar game calls. Each activity shows its purpose, explains the concept with an example, then opens practice. Examples/hints never overwrite learner code. First guided print has a starter; independent greeting starts blank and requires different words. print writes actual Python output; this game maps it to a board. Later variable bindings and game-provided farm tools are explicitly explained.
 
+Owner-requested journey refinement (2026-10-26, local review): each activity’s story, goal, concept explanation, example and learner editor appear together in one lesson workspace. Learners no longer need separate “Show me how” and “Let me try” screens. Feedback, Python output, farm changes, saved drafts and rewards keep their existing behavior. The post-success screen remains a clear checkpoint before continuing.
+
 ## Chapter1 sequence and Topic1 coverage
 1. Supported welcome: print, quotes, parentheses, case sensitivity.
 2. Independent welcome: First Hello and flower pin.
@@ -162,3 +164,8 @@ Owner explicitly authorized going live with PWA installation metadata/icons, gen
 ## PWA, ambience and activity review published — 2026-10-26
 
 Published with explicit owner authorization. Application fdaf65fe97f882d9531c270cab7d6bed73691008 is live via manual workflow_dispatch run 40377719151, completed Success: https://github.com/mochi-coding-lab/mochi-coding-lab.github.io/actions/runs/40377719151 . Public first-lesson.html, manifest.webmanifest, farm-chapter.js, farm-ambience.js and farm-supply-visuals.js return HTTP 200 and SHA-256 match the tested public build. Includes installable-app metadata/icons, gentle farm breeze/birds, activities 4–5 supply visuals and Previous/Next controls, while preserving newer approved storybook design and chapter restart. Workflow remains manual-only without trigger changes. All earlier local-only/unpublished notes for these features are superseded. Actual device installation, speaker/listening, layout/learning acceptance and final hackathon review remain pending; deployment is not a Devpost submission. Review https://mochi-coding-lab.github.io/first-lesson.html?v=fdaf65f .
+
+
+## Sticky task progress and Tasks labels — 2026-10-26
+
+Owner requested persistent task numbering and progress during scrolling, renaming Activities to Tasks, and deployment. Lesson header is sticky; chapter progress bar is sticky below it. User-facing counter reads Task N / 12 with Arabic translation; opener and Chapter 1 dialog say Tasks. The combined story/instructions/example/editor view from the immediately preceding request is included in this same release.

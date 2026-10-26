@@ -1,3 +1,12 @@
+## Sticky task progress and Tasks labels — 2026-10-26
+
+Owner requested persistent task numbering and progress during scrolling, renaming Activities to Tasks, and deployment. Lesson header is sticky; chapter progress bar is sticky below it. User-facing counter reads Task N / 12 with Arabic translation; opener and Chapter 1 dialog say Tasks. The combined story/instructions/example/editor view from the immediately preceding request is included in this same release.
+
+
+## One-screen activity flow — 2026-10-26
+
+Owner reported the separate activity/introduction and practice screens made completing Chapter1 too slow. Updated local source and public preview so each activity presents story, goal, concept, example and live Python editor together. Opening walkthrough and post-success reward checkpoint remain. No fresh browser/phone interaction or Python regression run yet; owner hands-on review is required before committing/publishing. Fast demo advice: do not type all twelve programs; warm the browser before recording and show one simple print plus one farm-changing crop/seed task. No existing demo recording found in the workspace. Deployment remains pending.
+
 ## PWA, ambience and activity review published — 2026-10-26
 
 Published with explicit owner authorization. Application fdaf65fe97f882d9531c270cab7d6bed73691008 is live via manual workflow_dispatch run 40377719151, completed Success: https://github.com/mochi-coding-lab/mochi-coding-lab.github.io/actions/runs/40377719151 . Public first-lesson.html, manifest.webmanifest, farm-chapter.js, farm-ambience.js and farm-supply-visuals.js return HTTP 200 and SHA-256 match the tested public build. Includes installable-app metadata/icons, gentle farm breeze/birds, activities 4–5 supply visuals and Previous/Next controls, while preserving newer approved storybook design and chapter restart. Workflow remains manual-only without trigger changes. All earlier local-only/unpublished notes for these features are superseded. Actual device installation, speaker/listening, layout/learning acceptance and final hackathon review remain pending; deployment is not a Devpost submission. Review https://mochi-coding-lab.github.io/first-lesson.html?v=fdaf65f .
