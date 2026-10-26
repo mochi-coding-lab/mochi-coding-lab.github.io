@@ -46,3 +46,5 @@
 
 /* Match the owner's full-window close-farm reference. */
 @media(min-width:1200px){.is-walkthrough .lesson-workspace h1{font-size:26px;line-height:1.2}.is-walkthrough .lesson-workspace .story-copy{font-size:16px;line-height:1.5}.mochi-message{max-width:390px}.mochi-message p{font-size:13px}}
+
+#restartDialog{width:490px}#restartDialog p{font-size:15px;line-height:1.6}.restart-actions{display:flex;gap:10px;flex-wrap:wrap}.restart-actions button{flex:1;min-width:150px}#restartChapter{white-space:nowrap}@media(max-width:759px){.workspace-top{gap:5px}.workspace-top button{padding:7px 8px}.workspace-top>span{font-size:10px}}
