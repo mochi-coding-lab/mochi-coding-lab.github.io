@@ -24,3 +24,6 @@ No artwork edited and no new game commands/runtime implemented in this planning 
 
 ## Delivery
 Full coverage is owner requirement. Group into short farm-story chapters as useful, not a fixed five-exercise lesson. Proposed order and exact interactions remain for review; deadline does not silently remove topics. Commit/push planning only; no deployment without owner request.
+
+## Opening revision — 2026-10-26
+Owner rejects object-style game commands as first coding task and requires explicit mission, explanation and guidance before result. Earlier gate-command-first sequence is superseded. New opening preview in little-acres/lesson1-opening-preview.html demonstrates narrative entry then guided print() practice; final acceptance pending. Broader resource coverage remains required.
