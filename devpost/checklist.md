@@ -238,3 +238,8 @@ Published with explicit owner authorization. Application fdaf65fe97f882d9531c270
 Owner requested persistent task numbering and progress during scrolling, renaming Activities to Tasks, and deployment. Lesson header is sticky; chapter progress bar is sticky below it. User-facing counter reads Task N / 12 with Arabic translation; opener and Chapter 1 dialog say Tasks. The combined story/instructions/example/editor view from the immediately preceding request is included in this same release.
 
 - [x] Keep task counter/progress bar fixed during lesson scrolling and rename the activity picker Tasks; included in authorized combined-screen release.
+
+
+## Sticky task progress and unified lessons deployed — 2026-10-26
+
+Owner authorized deployment of combined activity/practice, sticky task counter and progress bar, and Tasks labels. Commit 8529bf6 was deployed with manual Pages workflow run 40381931562 (Success): https://github.com/mochi-coding-lab/mochi-coding-lab.github.io/actions/runs/40381931562 . Live first-lesson.html and JavaScript return HTTP 200 and match the approved build. Review URL: https://mochi-coding-lab.github.io/first-lesson.html?v=8529bf6 . Manual-only deploy workflow remains in place. Hands-on scrolling, activity progression, and mobile review remain learner checks.
