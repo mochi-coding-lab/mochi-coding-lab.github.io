@@ -72,3 +72,6 @@ Same checkpoint package updated: outputs/2026-10-21-checkpoint-world-overview.md
 
 ### 2026-10-21 — Approved public release, ENG-006
 Owner approved/publicly deployed living-map homepage with first playable five-activity island. Agent verified full guest flow on HTTPS including persistence and restoration. Four future islands/finale remain upcoming; no learner or audio-quality findings. Existing package updated with 25-second reveal, subtitles, capture plan and limits. Social draft only: CAPTURE NOW / POST LATER. Website publication authorized separately; no social publication.
+
+### CONTENT-014 / ENG-007 — 2026-10-26
+Working FirstHello reward reveal: [complete24-second Reel/Story package](outputs/2026-10-26-checkpoint-first-hello-reward.md). Actual local prototype; screenshot evidence, not recorded video. CAPTURE NOW / POST LATER; owner/device review, capture/editing and publication approval pending. No learning or engagement results.

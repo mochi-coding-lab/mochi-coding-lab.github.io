@@ -312,3 +312,6 @@ Owner approved tablet/desktop sidebar with full contained farm, and the screensh
 
 ### Tablet layout update — 2026-10-25
 See ../checklist.md for current tablet controls-under-farm layout and validation. This supersedes the prior tablet sidebar; desktop remains a sidebar.
+
+## First Morning chapter implementation — 2026-10-26
+The twelve-activity real-Python chapter supersedes the earlier five-step bounded lesson. Current architecture and validation: ../checklist.md. Original lesson archived at ../archive/lesson-before-first-morning/. Not yet deployed.

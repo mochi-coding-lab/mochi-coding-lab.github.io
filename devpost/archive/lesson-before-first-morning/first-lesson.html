@@ -1,0 +1,1119 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mochi · Lesson 1 — Getting started with Python</title>
+<style>
+:root{
+  --ink:#faf5e8;
+  --muted:#b8c4b2;
+  --glass:rgba(10,24,16,.86);
+  --line:rgba(255,255,255,.15);
+  --gold:#eab55b;
+  --gold-2:#c98f34;
+  --sage:#9bd0a8;
+  --danger:#ef9b83;
+  --font:"Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,"Noto Sans Arabic",sans-serif;
+  --mono:"Cascadia Code","Cascadia Mono",Consolas,"SFMono-Regular",monospace;
+}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{margin:0;background:#071009;color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+button:focus-visible,a:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid #ffe6a6;outline-offset:2px}
+.world{position:fixed;inset:0;overflow:hidden;z-index:0}
+.world>img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.world:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,transparent 30%,rgba(3,9,6,.66) 100%),linear-gradient(180deg,rgba(3,9,6,.7),transparent 30%,transparent 70%,rgba(3,9,6,.8))}
+.mochi{position:absolute;left:50%;top:76%;width:clamp(105px,12vw,170px);transform:translate(-50%,-100%);z-index:2;pointer-events:none}
+.mochi img{width:100%;height:auto;filter:drop-shadow(0 14px 10px rgba(0,0,0,.35));animation:bob 3.2s ease-in-out infinite}
+.mochi .bubble{position:absolute;left:50%;bottom:calc(100% + 12px);transform:translateX(-50%);width:max-content;max-width:min(330px,60vw);padding:10px 14px;border-radius:15px;background:rgba(255,251,238,.97);color:#27352a;font-size:13px;line-height:1.45;border:1px solid rgba(90,74,45,.18);box-shadow:0 12px 28px rgba(5,12,8,.28);white-space:pre-wrap;overflow-wrap:anywhere}
+.mochi .bubble:after{content:"";position:absolute;left:50%;bottom:-6px;width:12px;height:12px;background:rgba(255,251,238,.97);transform:translateX(-50%) rotate(45deg);border-right:1px solid rgba(90,74,45,.18);border-bottom:1px solid rgba(90,74,45,.18)}
+.mochi .bubble.hidden{display:none}
+.hud{position:fixed;inset:0;z-index:5;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:clamp(14px,2vw,28px);pointer-events:none}
+.hud>*{pointer-events:auto}
+.panel{background:var(--glass);border:1px solid var(--line);border-radius:20px;backdrop-filter:blur(20px) saturate(1.1);box-shadow:0 24px 55px rgba(3,9,6,.38)}
+.lesson-panel{width:min(380px,calc(100vw - 28px));padding:18px 20px 19px;max-height:calc(100vh - 56px);overflow:auto;scrollbar-width:thin}
+.eyebrow{display:flex;align-items:center;gap:7px;font-size:9.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#f0c073}
+.eyebrow:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}
+.lesson-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.lesson-tools{display:flex;align-items:center;gap:5px;flex-shrink:0}
+.chapters-link,.lang-btn{padding:5px 9px;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(255,255,255,.05);color:#cfe0c8;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.chapters-link:hover,.lang-btn:hover{background:rgba(255,255,255,.1);color:#fff8e6}
+.lang-btn{min-width:58px;text-transform:none;letter-spacing:0;font-size:10px}
+.step-line{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:11px}
+.step-badge{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#a9b9a8}
+.dots{display:flex;gap:5px}
+.dots button{width:19px;height:19px;border-radius:50%;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);color:#cbd6c8;font:9px var(--mono);display:grid;place-items:center;padding:0}
+.dots button.done{background:var(--sage);border-color:var(--sage);color:#102017}
+.dots button.current{outline:2px solid var(--gold);outline-offset:2px;color:#fff4d3}
+.dots button:disabled{cursor:default;opacity:.55}
+h1{margin:8px 0 6px;font-size:clamp(23px,2.5vw,30px);line-height:1.08;letter-spacing:-.03em;color:#fff9e9}
+.idea{margin:0 0 12px;color:#bdc9b9;font-size:13px;line-height:1.65}
+.idea code,.task code,.example code,.success code{font-family:var(--mono);font-size:.92em;background:rgba(234,181,91,.12);color:#f5d99c;padding:1px 5px;border-radius:5px;direction:ltr;unicode-bidi:isolate}
+.task{padding:10px 12px;border:1px solid rgba(234,181,91,.28);border-radius:12px;background:rgba(234,181,91,.07)}
+.task>span{display:block;margin-bottom:4px;color:var(--gold);font-size:9px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+.task p{margin:0;color:#f0ead8;font-size:12.5px;line-height:1.55}
+.example{margin:11px 0 0;border-top:1px solid rgba(255,255,255,.1);padding-top:10px;font-size:11.5px;color:#b3c1ae}
+.example summary{display:flex;align-items:center;gap:7px;list-style:none;cursor:pointer;font-weight:650;color:#c9d5c5}
+.example summary::-webkit-details-marker{display:none}
+.example summary:before{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg);transition:transform .18s}
+.example[open] summary:before{transform:rotate(45deg)}
+.example pre{margin:9px 0 6px;padding:9px 10px;border:1px solid rgba(255,255,255,.1);border-radius:9px;background:#07140d;color:#d9f0d9;font:11.5px/1.6 var(--mono);white-space:pre-wrap;overflow-wrap:anywhere}
+.example p{margin:0;font-size:11px;line-height:1.55}
+.lesson-actions{display:flex;gap:7px;margin-top:11px}
+.lesson-actions button{min-height:33px;padding:0 11px;border:1px solid rgba(255,255,255,.15);border-radius:9px;background:rgba(255,255,255,.05);color:#c9d5c5;font-size:10.5px;font-weight:650}
+.lesson-actions button:hover{background:rgba(255,255,255,.1);color:#fff8e6}
+.hint,.feedback{margin-top:9px;padding:9px 11px;border-radius:9px;font-size:11px;line-height:1.55}
+.hint{background:rgba(234,181,91,.09);border:1px solid rgba(234,181,91,.22);color:#f4dfb0}
+.feedback{background:rgba(239,155,131,.1);border:1px solid rgba(239,155,131,.3);color:#ffd1c2}
+.success{margin-top:11px;padding:12px;border:1px solid rgba(155,208,168,.38);border-radius:11px;background:rgba(155,208,168,.1);color:#e2f5dc}
+.success p{margin:0 0 9px;font-size:11.5px;line-height:1.55}
+.success button{width:100%;min-height:34px;border-radius:9px;background:linear-gradient(180deg,#f0c575,#dca84f);color:#2b2412;font-size:11px;font-weight:800}
+
+.code-panel{width:min(465px,calc(100vw - 28px));padding:0;overflow:hidden;max-height:calc(100vh - 56px);display:flex;flex-direction:column}
+.code-head{display:flex;align-items:center;gap:7px;padding:10px 13px;border-bottom:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#b8e4c5;font-weight:800}
+.code-head i{width:7px;height:7px;border-radius:50%;background:#8fd6a0;box-shadow:0 0 8px #8fd6a0}
+.code-head .filename{margin-left:auto;color:#829a85;font:9.5px var(--mono);letter-spacing:0;text-transform:none}
+.code-body{padding:12px 13px 13px;overflow:auto}
+.code-body>label{display:block;margin:0 0 6px;color:#9fb8a1;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+#code{display:block;width:100%;min-height:210px;max-height:300px;resize:vertical;padding:12px;border:1px solid #2b4536;border-radius:12px;background:#07140d;color:#dcf0da;font:13px/1.7 var(--mono);outline:none;caret-color:#eab55b;tab-size:2;white-space:pre;overflow:auto}
+#code:focus{border-color:#6fae89;box-shadow:0 0 0 3px rgba(111,174,137,.14)}
+#code::placeholder{color:#5f7866}
+#output:empty:before{content:"Output appears here after Run.";color:#6e8576;font-style:italic;font-family:var(--font)}
+html[dir=rtl] #output:empty:before{content:"سيظهر الناتج هنا بعد التشغيل."}
+#tourCount{direction:ltr;unicode-bidi:isolate;display:inline-block}
+.code-actions{display:flex;gap:7px;margin-top:8px}
+#run{flex:1;min-height:40px;border-radius:10px;background:linear-gradient(180deg,#f0c575,#dca84f);color:#2b2412;font-size:12.5px;font-weight:800;border:1px solid #f7d99a;box-shadow:0 5px 14px rgba(234,181,91,.2)}
+#run:hover{filter:brightness(1.04)}
+#clear{min-height:40px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);color:#c9d5c5;font-size:10.5px}
+.error{margin-top:9px;padding:9px 11px;border:1px solid rgba(239,155,131,.4);border-left:3px solid var(--danger);border-radius:8px;background:rgba(239,155,131,.12);color:#ffd1c2;font-size:11px;line-height:1.5}
+.error[hidden]{display:none}
+.output-head{display:flex;justify-content:space-between;align-items:center;margin:12px 0 5px;color:#9fb8a1;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.output-head span:last-child{font:9px var(--mono);color:#718876;letter-spacing:0;text-transform:none}
+#output{min-height:70px;max-height:130px;margin:0;padding:10px 11px;border:1px solid #243a2c;border-radius:10px;background:#0a1710;color:#d7e7ce;font:12px/1.6 var(--mono);white-space:pre-wrap;overflow:auto}
+#output:empty:before{content:"Output appears here after Run.";color:#6e8576;font-style:italic;font-family:var(--font)}
+.code-foot{margin-top:9px;color:#7d937f;font-size:9.5px;line-height:1.45}
+.save-state{margin-top:5px;color:#b8e4c5;font-size:9.5px;line-height:1.45}
+
+.variable-tag{position:fixed;left:50%;top:52%;transform:translate(-50%,-50%);z-index:3;padding:7px 11px;border:1px solid rgba(234,181,91,.45);border-radius:10px;background:rgba(8,20,13,.88);color:#fff4d6;font-size:11px;text-align:center;backdrop-filter:blur(10px);box-shadow:0 8px 22px rgba(3,9,6,.3)}
+.variable-tag code{display:block;color:#f0c575;font:11px var(--mono);margin-bottom:2px}
+.variable-tag span{display:block;max-width:200px;overflow-wrap:anywhere}
+.area-card{position:fixed;left:50%;top:47%;transform:translate(-50%,-50%);z-index:3;padding:10px 14px;border:1px solid rgba(155,208,168,.4);border-radius:12px;background:rgba(8,20,13,.9);color:#e6f6df;font:12px var(--mono);text-align:center;backdrop-filter:blur(10px);box-shadow:0 10px 26px rgba(3,9,6,.3)}
+.area-card b{display:block;font:700 20px var(--font);color:#fff6dc;margin-bottom:2px}
+.complete{position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:20px;background:rgba(3,9,6,.66);backdrop-filter:blur(10px)}
+.complete[hidden]{display:none}
+.complete-card{width:min(430px,calc(100vw - 30px));padding:28px 26px 24px;border-radius:26px;text-align:center;background:linear-gradient(160deg,#173225,#0b1a12);border:1px solid rgba(234,181,91,.34);box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.complete-card img{width:110px;filter:drop-shadow(0 14px 10px rgba(0,0,0,.4));animation:bob 2.2s ease-in-out infinite}
+.complete-card .kicker{margin:4px 0 5px;color:var(--gold);font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.complete-card h2{margin:0;font-size:29px;letter-spacing:-.035em;color:#fff8e4}
+.complete-card p{margin:9px auto 18px;max-width:330px;color:#b9c8b7;font-size:13px;line-height:1.6}
+.complete-card button{width:100%;min-height:43px;border-radius:12px;background:#f0c575;color:#2b2412;font-size:12.5px;font-weight:800}
+@keyframes bob{50%{transform:translateY(-5px) rotate(-1.5deg)}}
+#tour-layer{position:fixed;inset:0;z-index:100}
+#tour-layer[hidden]{display:none}
+#tour-spotlight{position:fixed;border:2px solid #ffe2a0;border-radius:16px;box-shadow:0 0 0 9999px rgba(3,10,6,.72);pointer-events:none;transition:left .2s,top .2s,width .2s,height .2s}
+#tour-card{position:fixed;z-index:2;width:min(342px,calc(100vw - 24px));padding:18px;border-radius:18px;background:rgba(8,20,13,.97);border:1px solid rgba(234,181,91,.38);box-shadow:0 24px 60px rgba(0,0,0,.45);color:#f9f4e6;backdrop-filter:blur(18px);max-height:calc(100dvh - 24px);overflow:auto}
+#tour-card .tour-lang{position:absolute;top:12px;right:12px;padding:5px 9px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.06);color:#cfe0c8;font-size:10px}
+#tour-card small{display:block;color:#f0c073;font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding-right:70px}
+#tour-card h2{margin:8px 0 7px;font-size:21px;line-height:1.15;letter-spacing:-.025em;color:#fff8e6}
+#tour-card p{margin:0 0 13px;color:#bdc9b9;font-size:12px;line-height:1.6}
+.tour-actions{display:flex;gap:7px;flex-wrap:wrap}
+.tour-actions button{min-height:34px;padding:0 11px;border-radius:9px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);color:#d5e0d0;font-size:10.5px;font-weight:650}
+.tour-actions button:hover{background:rgba(255,255,255,.1);color:#fff8e6}
+.tour-actions #tourNext{background:linear-gradient(180deg,#f0c575,#dca84f);border-color:#f7d99a;color:#2b2412;font-weight:800}
+.tour-actions #tourSkip{margin-left:auto;background:transparent;border-color:transparent;color:#a9b9a8}
+html[dir=rtl] .hud{direction:rtl}
+html[dir=rtl] .code-panel{direction:rtl}
+html[dir=rtl] #code,html[dir=rtl] #exampleCode{direction:ltr;text-align:left}
+html[dir=rtl] .variable-tag{direction:rtl}
+html[dir=rtl] .mochi .bubble{text-align:right}
+html[dir=rtl] #tour-card{text-align:right}
+html[dir=rtl] #tour-card .tour-lang{right:auto;left:12px}
+html[dir=rtl] #tour-card small{padding-right:0;padding-left:70px}
+html[dir=rtl] .tour-actions #tourSkip{margin-left:0;margin-right:auto}
+.mini-mochi{display:none}
+.phone-hero{display:none}
+@media(max-width:759px){
+  .focus-float{display:none}
+  body{overflow:auto}
+  .hud{position:relative;display:block;min-height:100vh;padding:12px;pointer-events:auto}
+  .phone-hero{display:flex;align-items:flex-end;justify-content:center;gap:12px;height:clamp(210px,31vh,300px);padding:0 12px 12px}
+  .phone-hero img{width:104px;height:auto;filter:drop-shadow(0 14px 10px rgba(0,0,0,.35));animation:bob 3.4s ease-in-out infinite}
+  .phone-hero span{padding:7px 11px;border-radius:999px;background:rgba(8,18,12,.72);border:1px solid rgba(255,255,255,.16);color:#f7edd4;font-size:10px;font-weight:650;backdrop-filter:blur(10px);margin-bottom:10px}
+  .lesson-panel,.code-panel{width:100%;max-width:none;max-height:none;margin-bottom:12px}
+  .mochi{display:none}
+  .world{opacity:1}
+  .variable-tag,.area-card{display:none!important}
+  .mini-mochi{display:block;width:44px;height:44px;object-fit:contain;border-radius:50%;background:#f4e7c9;border:2px solid #fffdf7;margin:0 0 8px;box-shadow:0 3px 10px rgba(0,0,0,.3)}
+}
+@media(max-width:600px){
+  .hud{padding:10px}
+  .lesson-panel,.code-panel{border-radius:15px}
+  .lesson-panel{padding:14px 15px}
+  .code-body{padding:10px}
+  #code{min-height:160px;max-height:240px;font-size:12px}
+  .code-head{font-size:9px}
+  h1{font-size:23px}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+
+.notes{margin:0 0 10px;padding-top:8px;border-top:1px solid rgba(255,255,255,.1)}
+.notes summary{display:flex;align-items:center;gap:7px;list-style:none;cursor:pointer;color:#c9d5c5;font-size:11px;font-weight:650}
+.notes summary::-webkit-details-marker{display:none}
+.notes summary:before{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg);transition:transform .18s}
+.notes[open] summary:before{transform:rotate(45deg)}
+.notes .idea{margin:8px 0 0}
+.focus-btn{border:1px solid rgba(234,181,91,.36);background:rgba(234,181,91,.1);color:#f2d28e;border-radius:999px;padding:5px 9px;font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.focus-btn:hover{background:rgba(234,181,91,.18)}
+.focus-btn[aria-pressed="true"]{background:var(--gold);color:#2a2410;border-color:#ffe1a2}
+.focus-float{position:fixed;z-index:25;top:16px;left:50%;transform:translateX(-50%);background:rgba(8,20,13,.78);backdrop-filter:blur(12px)}
+body.focus-mode .focus-float{display:none}
+.focus-restore{position:fixed;z-index:30;top:16px;left:50%;transform:translateX(-50%);border:1px solid rgba(234,181,91,.5);border-radius:999px;background:rgba(8,20,13,.92);color:#f5d99c;padding:10px 16px;font-size:11px;font-weight:800;box-shadow:0 10px 26px rgba(0,0,0,.35);backdrop-filter:blur(14px)}
+.focus-restore[hidden]{display:none}
+body.focus-mode .lesson-panel,body.focus-mode .code-panel{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(8px) scale(.985)}
+.lesson-panel,.code-panel{transition:opacity .2s ease,transform .2s ease}
+@media(min-width:760px){
+  .lesson-panel{width:min(340px,calc(100vw - 28px));padding:14px 15px 15px}
+  .code-panel{width:min(370px,calc(100vw - 28px))}
+  .lesson-panel h1{font-size:25px}
+  .lesson-panel .idea{font-size:12px;line-height:1.55}
+  .lesson-panel .task{padding:9px 11px}
+  .lesson-panel .task p{font-size:12px}
+  #code{min-height:150px;max-height:220px}
+  .code-body{padding:10px 11px 11px}
+  .code-foot{display:none}
+  #output{min-height:56px;max-height:96px}
+}
+
+/* Scene-first lesson workspace: one bottom dock, both necessary panels visible. */
+.lesson-dock{display:contents}
+.dock-resize{display:none}
+.code-main,.code-side{display:contents}
+body.focus-mode .lesson-dock{opacity:0;visibility:hidden;pointer-events:none}
+body.dock-resizing{cursor:ns-resize;user-select:none}
+@media(min-width:760px){
+  .hud{padding:0;display:block}
+  .lesson-dock{position:fixed;z-index:6;left:12px;right:12px;bottom:12px;height:var(--dock-h,300px);display:flex;align-items:stretch;gap:10px;pointer-events:auto;transition:opacity .2s ease}
+  .dock-resize{display:flex;position:absolute;z-index:9;top:-11px;left:50%;width:92px;height:20px;transform:translateX(-50%);align-items:center;justify-content:center;cursor:ns-resize;touch-action:none;border:1px solid rgba(234,181,91,.4);border-radius:10px;background:rgba(8,20,13,.88);box-shadow:0 3px 12px rgba(0,0,0,.35)}
+  .dock-resize:before{content:"";width:46px;height:5px;border-radius:5px;background:rgba(245,225,180,.5);box-shadow:0 1px 5px rgba(0,0,0,.4)}
+  .dock-resize:hover:before,.dock-resize:focus-visible:before{background:var(--gold)}
+  .lesson-panel{width:340px;height:100%;max-height:none;overflow:auto;padding:12px 14px 13px}
+  .lesson-panel h1{font-size:24px;margin:6px 0 5px}
+  .lesson-panel .step-line{margin-top:8px}
+  .lesson-panel .task{padding:8px 10px}
+  .lesson-panel .task p{font-size:11.5px}
+  .lesson-panel .notes{margin-bottom:8px;padding-top:6px}
+  .lesson-panel .lesson-actions{margin-top:8px}
+  .code-panel{width:auto;flex:1;min-width:0;height:100%;max-height:none}
+  .code-body{display:flex;flex:1;min-height:0;gap:10px;padding:10px 11px 11px;overflow:hidden}
+  .code-main{display:flex;flex:1.15;min-width:0;min-height:0;flex-direction:column;gap:6px}
+  .code-side{display:flex;flex:.85;min-width:230px;min-height:0;flex-direction:column}
+  .code-main label{margin:0}
+  #code{flex:1;min-height:62px;max-height:none;height:auto;resize:none}
+  .output-head{margin:0 0 5px}
+  #output{flex:1;min-height:0;max-height:none;height:auto}
+  .code-foot,.save-state{display:none}
+  .error{max-height:52px;overflow:auto;margin-top:0}
+  .mochi{top:58%}
+}
+@media(max-width:759px){
+  .lesson-dock{display:contents}
+  .dock-resize{display:none}
+  .code-main,.code-side{display:contents}
+}
+
+@media(min-width:760px){
+  :root{--dock-h:300px}
+  .world{top:12px;right:12px;bottom:calc(var(--dock-h,300px) + 24px);left:12px;border-radius:18px;overflow:hidden;background:#071009;transition:bottom .2s ease}
+  .world:before{content:"";position:absolute;inset:-24px;z-index:0;background:url("art/restoration-shell-1600.webp") center/cover;filter:blur(14px) brightness(.44) saturate(.8);transform:scale(1.04)}
+  .world>img{position:relative;z-index:1;object-fit:contain}
+  .world:after{z-index:2}
+  body.focus-mode .world{bottom:12px}
+  body.focus-mode .mochi{top:calc(50% + 24px)}
+}
+</style>
+<link rel="stylesheet" href="world-map-home.css">
+<style id="lesson-rail-layout">
+@media(min-width:760px){
+  :root{--lesson-rail-width:clamp(250px,29vw,380px)}
+  .phone-hero,.mini-mochi{display:none}
+  body{overflow:hidden}
+  .world{top:12px;left:12px;right:calc(var(--lesson-rail-width) + 24px);bottom:12px;border-radius:18px;overflow:hidden}
+  .world>img{object-fit:contain}
+  .world:before{filter:blur(12px) brightness(.45)}
+  .lesson-dock{position:fixed;z-index:6;top:12px;right:12px;bottom:12px;left:auto;width:var(--lesson-rail-width);height:auto;display:flex;flex-direction:column;gap:10px}
+  .dock-resize{display:none}
+  .lesson-panel{width:100%;height:auto;flex:0 0 43%;max-height:43%;overflow:auto;padding:13px 14px}
+  .code-panel{width:100%;height:auto;flex:1;min-height:0}
+  .code-body{display:flex;flex-direction:column;gap:7px;padding:10px;overflow:auto}
+  .code-main{display:flex;flex:1;min-height:0;flex-direction:column;gap:6px}
+  .code-side{display:flex;flex:0 0 92px;min-height:0;flex-direction:column}
+  #code{min-height:120px;max-height:180px;flex:1}
+  #output{min-height:54px;max-height:82px;flex:1}
+  .code-foot,.save-state{display:none}
+  .mochi{left:calc((100% - var(--lesson-rail-width) - 12px)/2);top:58%}
+  .focus-float{left:calc((100% - var(--lesson-rail-width) - 12px)/2)}
+  .lesson-panel .notes{margin-bottom:8px}
+  body.focus-mode .world{right:12px}
+  body.focus-mode .mochi{left:50%}
+}
+/* Tablets: full-width farm with the lesson and code windows underneath. */
+@media(min-width:760px) and (max-width:1199px){
+  :root{--tablet-scene-height:62dvh}
+  .world{right:12px;bottom:auto;height:var(--tablet-scene-height)}
+  .world>img{object-fit:cover;object-position:center}
+  body.focus-mode .world>img{object-fit:contain}
+  .lesson-dock{top:calc(var(--tablet-scene-height) + 24px);left:12px;right:12px;bottom:12px;width:auto;flex-direction:row;align-items:stretch}
+  .lesson-panel{width:40%;padding:10px;flex:0 0 40%;max-height:100%;height:100%}
+  .code-panel{flex:1;height:100%;min-width:0}
+  .code-main,.code-side{min-width:0;flex:0 0 auto}
+  #code{height:120px;flex:none}
+  .focus-float{left:50%}
+  body.focus-mode .world{height:auto;bottom:12px}
+  body .mochi,body.focus-mode .mochi{position:fixed;left:var(--mochi-x,54%);top:calc(var(--mochi-y,35%) + var(--mochi-foot-padding,0px));width:var(--mochi-size,90px)}
+  .mochi img{animation:none;filter:drop-shadow(0 3px 3px #172b2538)}
+  .variable-tag,.area-card{left:30%;top:calc(var(--tablet-scene-height) * .6)}
+  .lesson-panel h1{font-size:22px}
+  .lesson-top{flex-wrap:wrap;gap:6px}
+  .lesson-tools{margin-left:auto;flex-wrap:wrap}
+  .lesson-panel .task p{font-size:12px}
+  .code-body{padding:8px}
+}
+</style>
+
+<style id="phone-scene-sheet-layout">
+/* Phone reference: persistent scene above an independently scrolling workspace. */
+@media(max-width:759px){
+  :root{--phone-scene-height:46dvh}
+  html,body{height:100%;overflow:hidden}
+  .world{inset:0 0 auto;height:var(--phone-scene-height);opacity:1}
+  .world>img{object-fit:cover;object-position:center}
+  .world:after{background:linear-gradient(90deg,rgba(255,255,255,.35) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.35) 1px,transparent 1px);background-size:54px 54px}
+  .hud{position:fixed;inset:0;padding:0;min-height:0;pointer-events:none}
+  .phone-hero,.mini-mochi{display:none}
+  .mochi{display:block;position:fixed;left:53%;top:calc(var(--phone-scene-height)*.73);width:56px;z-index:3}
+  .mochi .bubble{max-width:min(280px,75vw);font-size:12px}
+  .lesson-dock{position:fixed;display:block;top:var(--phone-scene-height);bottom:0;left:0;right:0;overflow:auto;overscroll-behavior:contain;background:#102c20;border-radius:18px 18px 0 0;pointer-events:auto;padding:0 6px 14px;scrollbar-width:auto}
+  .lesson-panel,.code-panel{width:100%;max-height:none;margin:0 0 12px;border-radius:0;border:0;background:#102c20;box-shadow:none;backdrop-filter:none}
+  .lesson-panel{padding:14px 12px}
+  .lesson-top{position:fixed;top:16px;left:6px;right:18px;z-index:8;gap:12px;pointer-events:auto}
+  .eyebrow{max-width:49%;min-height:46px;padding:12px 14px;border:1px solid #83986c;border-radius:40px;background:#163425;font-size:11px;letter-spacing:.04em}
+  .lesson-tools{gap:10px}
+  .chapters-link,.lang-btn{display:flex;align-items:center;justify-content:center;min-height:46px;padding:9px 13px;border:1px solid #83986c;border-radius:40px;background:#163425;font-size:13px;letter-spacing:0}
+  .step-line{margin:0 0 12px;justify-content:flex-start;gap:10px}
+  .step-badge{font-size:11px;white-space:nowrap}
+  .dots{gap:7px}
+  .dots button{width:26px;height:26px;background:#9bd0a8;color:#102c20;border:0;font:700 11px var(--font);opacity:1}
+  .dots button.current{outline:2px solid var(--gold);outline-offset:3px}
+  .lesson-panel h1{font-size:25px;margin:0 0 12px}
+  .task{padding:11px 12px;border-radius:12px}
+  .task>span{font-size:10px;margin-bottom:5px}
+  .task p{font-size:14px;line-height:1.6}
+  .notes{margin-bottom:14px}
+  .notes summary,.example summary{font-size:12px}
+  .lesson-actions button{font-size:11px;min-height:34px}
+  .success{padding:14px;border-radius:16px}
+  .success p{font-size:13px;line-height:1.6}
+  .success button{font-size:14px;min-height:42px;border-radius:14px}
+  .code-panel{border-top:1px solid var(--line)}
+  .code-body{padding:14px}
+}
+@media(max-width:380px){
+  .lesson-top{gap:6px;right:8px}
+  .eyebrow{font-size:9px;padding:10px;min-height:44px}
+  .chapters-link,.lang-btn{font-size:13px;padding:10px 12px;min-height:44px}
+  .lesson-tools{gap:6px}
+  .step-line{gap:10px}.dots{gap:7px}.dots button{width:26px;height:26px}
+}
+</style>
+<link rel="stylesheet" href="lesson-phone.css?v=20261024-outside-gate" media="(min-width:1101px)">
+</head>
+<body>
+<div class="world" aria-hidden="true">
+  <img src="art/restoration-shell-1600.webp" alt="">
+  <div class="farm-square-grid"></div>
+</div>
+<div class="mochi" aria-hidden="true">
+  <div class="bubble hidden" id="bubble"></div>
+  <img src="art/play-mochi-512.webp" alt="">
+</div>
+
+<div class="hud">
+  <button class="focus-btn focus-float" id="focusBtn" type="button" aria-pressed="false">Focus on farm</button>
+  <div class="phone-hero" aria-hidden="true"><img src="art/play-mochi-512.webp" alt=""><span>Lesson 1 · The farm</span></div>
+  <div class="lesson-dock" id="lessonDock">
+  <div class="dock-resize" id="dockResize" role="separator" aria-orientation="horizontal" tabindex="0" aria-label="Resize lesson and code area"><span></span></div>
+  <section class="panel lesson-panel" aria-label="Lesson instructions">
+    <img class="mini-mochi" src="art/play-mochi-512.webp" alt="Mochi">
+    <div class="lesson-top"><div class="eyebrow" id="lessonEyebrow">Lesson 1 · Getting started</div><div class="lesson-tools"><a class="chapters-link" id="chaptersLink" href="index.html">Chapters</a><button class="lang-btn" id="langBtn" type="button" aria-label="Switch to Arabic">العربية</button></div></div>
+    <div class="step-line">
+      <span class="step-badge" id="stepBadge">Step 1 of 5</span>
+      <div class="dots" id="dots" aria-label="Lesson steps"></div>
+    </div>
+    <h1 id="stepTitle">Say hello</h1>
+    <details class="notes" id="notesBox"><summary>Lesson notes</summary><p class="idea" id="idea"></p></details>
+    <div class="task"><span id="taskLabel">Your task</span><p id="task"></p></div>
+    <details class="example" id="exampleBox"><summary id="exampleSummary">Show an example</summary><pre id="exampleCode"></pre><p id="exampleWhy"></p></details>
+    <div class="lesson-actions"><button id="hintBtn">Hint</button><button id="restart">Restart lesson</button></div>
+    <div class="hint" id="hint" hidden></div>
+    <div class="feedback" id="feedback" hidden></div>
+    <div class="success" id="success" hidden><p id="successMsg"></p><button id="nextBtn">Next step →</button></div>
+  </section>
+
+  <section class="panel code-panel" aria-label="Python editor">
+    <div class="code-head"><i></i><b>Python</b><span class="filename">lesson_1.py</span></div>
+    <div class="code-body">
+      <div class="code-main">
+        <label for="code" id="codeLabel">Write your code</label>
+        <textarea id="code" spellcheck="false" placeholder="Type your Python here…" dir="ltr"></textarea>
+        <div class="code-actions"><button id="run">Run ▶</button><button id="clear">Clear</button></div>
+        <div class="error" id="error" hidden></div>
+      </div>
+      <div class="code-side">
+        <div class="output-head"><span id="outputLabel">Output</span><span id="outputHint">press Run</span></div>
+        <pre id="output" aria-live="polite" dir="auto"></pre>
+      </div>
+      <div class="code-foot" id="codeFoot">Small practice editor · real Python also runs in IDLE, Jupyter or a .py file.</div>
+      <div class="save-state" id="saveState"></div>
+    </div>
+  </section>
+  </div>
+</div>
+<button class="focus-restore" id="focusRestore" type="button" hidden>Show lesson</button>
+
+<div class="variable-tag" id="variableTag" hidden><code>greeting</code><span id="variableValue"></span></div>
+<div class="area-card" id="areaCard" hidden><b id="areaValue"></b><span id="areaLabel"></span></div>
+
+<div class="complete" id="complete" hidden>
+  <div class="complete-card">
+    <img src="art/play-mochi-512.webp" alt="Mochi celebrates">
+    <p class="kicker" id="completionKicker">Lesson 1 complete</p>
+    <h2 id="completionTitle">You can write a program</h2>
+    <p id="completionCopy">You used <b>print</b>, a <b>string</b>, a <b>variable</b>, <b>numbers</b>, <b>arithmetic</b> and a <b>comment</b>. That is the foundation for the rest of the course.</p>
+    <button id="review">Review the lesson</button>
+<a id="returnToMap" class="completion-map-link" href="index.html">Return to your island map →</a>
+  </div>
+</div>
+
+<div id="tour-layer" hidden>
+  <div id="tour-spotlight"></div>
+  <section id="tour-card" role="dialog" aria-modal="true" aria-labelledby="tourTitle">
+    <button class="tour-lang" id="tourLang" type="button" aria-label="Switch language">العربية</button>
+    <small id="tourCount"></small>
+    <h2 id="tourTitle"></h2>
+    <p id="tourCopy"></p>
+    <div class="tour-actions">
+      <button id="tourBack" type="button">Back</button>
+      <button id="tourNext" type="button">Next</button>
+      <button id="tourSkip" type="button">Skip tour</button>
+    </div>
+  </section>
+</div>
+
+<script src="supabase-js.js"></script>
+<script src="auth-client.js"></script>
+<script src="chapter-engine.js"></script>
+<script>
+(() => {
+  'use strict';
+  const $ = s => document.querySelector(s);
+  const E = window.ChapterEngine;
+  const code = $('#code'), output = $('#output'), error = $('#error'), bubble = $('#bubble');
+  const stepBadge = $('#stepBadge'), stepTitle = $('#stepTitle'), idea = $('#idea'), task = $('#task');
+  const exampleCode = $('#exampleCode'), exampleWhy = $('#exampleWhy'), exampleBox = $('#exampleBox');
+  const hint = $('#hint'), hintBtn = $('#hintBtn'), feedback = $('#feedback');
+  const success = $('#success'), successMsg = $('#successMsg'), nextBtn = $('#nextBtn');
+  const dots = $('#dots'), complete = $('#complete');
+  const variableTag = $('#variableTag'), variableValue = $('#variableValue');
+  const areaCard = $('#areaCard'), areaValue = $('#areaValue'), areaLabel = $('#areaLabel');
+  const hud = $('.hud'), langBtn = $('#langBtn');
+  const tourLayer = $('#tour-layer'), tourSpotlight = $('#tour-spotlight'), tourCard = $('#tour-card');
+  const tourCount = $('#tourCount'), tourTitle = $('#tourTitle'), tourCopy = $('#tourCopy');
+  const tourBack = $('#tourBack'), tourNext = $('#tourNext'), tourSkip = $('#tourSkip'), tourLang = $('#tourLang');
+  let current = 0;
+  let completed = new Set();
+  let lang = 'en';
+  let tourIndex = -1;
+  let lastError = null;
+  let outputCount = 0;
+  const drafts = ['', '', '', '', ''];
+  const STORAGE_KEY = 'mochi.lesson1.progress.v1';
+  let initialized = false;
+  let saveTimer = null;
+  let restoring = false;
+
+  function captureState() {
+    return { current, completed: [...completed], drafts: [...drafts], savedAt: Date.now() };
+  }
+  function persist() {
+    if (!initialized) return;
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(async () => {
+      const state = captureState();
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+      if (window.MochiAuth && window.MochiAuth.user) {
+        try { await window.MochiAuth.saveProgress(state); } catch (e) { console.warn('Progress save failed', e); }
+      }
+    }, 350);
+  }
+  window.addEventListener('pagehide', () => {
+    clearTimeout(saveTimer);
+    if (initialized) try { localStorage.setItem(STORAGE_KEY, JSON.stringify(captureState())); } catch {}
+  });
+  function applyState(state) {
+    if (!state || typeof state !== 'object') return;
+    if (Array.isArray(state.completed)) completed = new Set(state.completed.filter(n => Number.isInteger(n) && n >= 0 && n < 5));
+    if (Array.isArray(state.drafts)) {
+      for (let i = 0; i < drafts.length; i++) drafts[i] = typeof state.drafts[i] === 'string' ? state.drafts[i] : '';
+    }
+    const next = Number.isInteger(state.current) ? Math.max(0, Math.min(steps.length - 1, state.current)) : 0;
+    restoring = true;
+    loadStep(next);
+    restoring = false;
+  }
+  async function restoreProgress() {
+    let remote = null;
+    let local = null;
+    try {
+      if (window.MochiAuth) await window.MochiAuth.ready;
+      if (window.MochiAuth && window.MochiAuth.user) remote = await window.MochiAuth.loadProgress();
+    } catch (e) { console.warn('Progress load failed', e); }
+    renderSaveState();
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) local = JSON.parse(raw);
+    } catch (e) {}
+    if (remote) applyState(remote);
+    else if (local) applyState(local);
+    initialized = true;
+    if (window.MochiAuth && window.MochiAuth.user && !remote && local) {
+      try { await window.MochiAuth.saveProgress(local); } catch (e) { console.warn('Progress upload failed', e); }
+    }
+  }
+
+  const steps = [
+    {
+      title: 'Say hello',
+      idea: 'Python is a language for giving a computer instructions. You write a program, then Run it. The first instruction is <code>print()</code>: it displays a message in Output. Text must be inside quotes — that is called a <b>string</b>. Python is case-sensitive, so <code>print</code> must be lowercase.',
+      task: 'Write one <code>print(...)</code> line with your own greeting, then press Run.',
+      example: 'print("Hello, Mochi!")',
+      why: 'The message is a string inside the quotes. The quotes themselves are not printed.',
+      hint: 'Start with print, then an opening parenthesis, your message in quotes, and a closing parenthesis.',
+      validate: r => {
+        const p = r.trace.find(c => c.type === 'print');
+        return !!(p && typeof p.value === 'string' && p.value.trim());
+      },
+      success: 'Your message appeared in Output and in Mochi\'s bubble. Now change the words and run it again.'
+    },
+    {
+      title: 'Give it a name',
+      idea: 'A <b>variable</b> is a name that refers to a value. The <code>=</code> sign assigns a value; it does not compare. After assigning, use the name without quotes to get the value back. Variable names start with a letter or <code>_</code>, and Python distinguishes uppercase from lowercase.',
+      task: 'Store your greeting in a variable called <code>greeting</code>, then print it.',
+      example: 'greeting = "Hello, Mochi!"\nprint(greeting)',
+      why: 'The first line stores the string. The second line prints the value through its name.',
+      hint: 'Write greeting = "your message" first. Then print(greeting) without quotes around the name.',
+      validate: r => {
+        const assigned = r.trace.find(c => c.type === 'assign' && c.name === 'greeting' && typeof c.value === 'string' && c.value.trim());
+        const printed = r.trace.some(c => c.type === 'print' && c.refs.includes('greeting') && c.value === r.env.get('greeting'));
+        return !!(assigned && printed);
+      },
+      success: 'The name tag shows what greeting holds. Change the value and run again — the output follows it.'
+    },
+    {
+      title: 'Numbers and arithmetic',
+      idea: 'Numbers do not use quotes. Python can calculate with <code>+</code>, <code>-</code> and <code>*</code>. The interpreter works out the right side before it assigns the result.',
+      task: 'Set <code>length</code> to 10 and <code>width</code> to 20. Calculate <code>area = length * width</code>, then print <code>area</code>.',
+      example: 'length = 10\nwidth = 20\narea = length * width\nprint(area)',
+      why: '10 × 20 = 200. The numbers are not in quotes, so Python treats them as numbers.',
+      hint: 'Use plain numbers for length and width. Use * for multiplication, then print(area).',
+      validate: r => {
+        const l = r.env.get('length'), w = r.env.get('width'), a = r.env.get('area');
+        const calc = r.trace.find(c => c.type === 'assign' && c.name === 'area' && c.ast.type === 'binary' && c.ast.op === '*');
+        const printed = r.trace.some(c => c.type === 'print' && c.refs.includes('area') && c.value === a);
+        return Number.isInteger(l) && l > 0 && l <= 100 && Number.isInteger(w) && w > 0 && w <= 100 && a === l * w && !!calc && printed;
+      },
+      success: 'The calculation worked. Your area is shown in the card and in Output.'
+    },
+    {
+      title: 'Leave a note',
+      idea: 'A <b>comment</b> starts with <code>#</code>. Python ignores everything after it on that line. Comments explain code to a human; they do not change the result.',
+      task: 'Add a <code>#</code> comment to a short program that prints a message, then run it.',
+      example: '# My first program\nprint("Hello!")',
+      why: 'The comment is skipped. Only print produces output.',
+      hint: 'Put # at the start of a line, then write a note. The next line can be a print statement.',
+      validate: r => r.comments > 0 && r.trace.some(c => c.type === 'print' && typeof c.value === 'string' && c.value.trim()),
+      success: 'The comment stayed in your code, but it did not appear in Output. That is exactly what comments are for.'
+    },
+    {
+      title: 'Put it together',
+      idea: 'A program can combine everything you have learned: a variable, a string, numbers, print and a comment. Read your code from top to bottom; Python does the same.',
+      task: 'Create <code>name</code> with your name, print it, print <code>2 + 3</code>, and add one comment.',
+      example: '# my first program\nname = "Mochi"\nprint(name)\nprint(2 + 3)',
+      why: 'The variable prints its value; 2 + 3 prints 5; the comment is ignored.',
+      hint: 'Start with a comment, then name = "your name", then two print lines.',
+      validate: r => {
+        const assigned = r.trace.find(c => c.type === 'assign' && c.name === 'name' && typeof c.value === 'string' && c.value.trim());
+        const namePrint = r.trace.some(c => c.type === 'print' && c.refs.includes('name') && c.value === r.env.get('name'));
+        const numberPrint = r.trace.some(c => c.type === 'print' && c.ast.type === 'binary' && typeof c.value === 'number');
+        return !!(assigned && namePrint && numberPrint && r.comments > 0);
+      },
+      success: 'You combined variables, numbers, print and a comment in one program.'
+    }
+  ];
+
+  const errors = {
+    empty: 'Write a program first. Start with a print line.',
+    case: 'Python is case-sensitive. Use print with a lowercase p.',
+    quote: 'A string needs matching quotation marks at both ends.',
+    bracket: 'Check the parentheses: print needs an opening ( and a closing ).',
+    identifier: 'Check the variable name: start with a letter or _, with no spaces or hyphens.',
+    keyword: 'That name is reserved in Python. Choose another name.',
+    undefined: 'That variable has not been given a value yet. Assign it before you use it.',
+    type: 'This operation does not match the value types. Use numbers without quotes for arithmetic.',
+    expression: 'Check the value or expression.',
+    symbol: 'That symbol is not supported in this lesson.',
+    unsupported: 'This lesson supports print, variables, numbers, arithmetic and comments.',
+    limit: 'Keep the program short: at most 24 instructions and 40 lines.',
+    range: 'Try smaller numbers.',
+    long: 'Keep text shorter than 180 characters.',
+    escape: 'Use simple text or a matching quote inside the message.'
+  };
+
+  const errorsAr = {
+    empty: 'اكتب برنامجًا أولًا. ابدأ بسطر print.',
+    case: 'بايثون تفرّق بين الحروف الكبيرة والصغيرة. استخدم print بحروف صغيرة.',
+    quote: 'النص يحتاج علامتي تنصيص متطابقتين في البداية والنهاية.',
+    bracket: 'راجع الأقواس: print يحتاج قوس فتح وقوس إغلاق.',
+    identifier: 'راجع اسم المتغير: ابدأ بحرف أو _، بدون مسافات أو شرطات.',
+    keyword: 'هذا الاسم محجوز في بايثون. اختر اسمًا آخر.',
+    undefined: 'هذا المتغير لم تُعطَ له قيمة بعد. أسنده قبل استخدامه.',
+    type: 'العملية لا تطابق أنواع القيم. استخدم أرقامًا بدون تنصيص للحساب.',
+    expression: 'راجع القيمة أو التعبير.',
+    symbol: 'هذا الرمز غير مدعوم في هذا الدرس.',
+    unsupported: 'هذا الدرس يدعم print والمتغيرات والأرقام والحساب والتعليقات.',
+    limit: 'اجعل البرنامج قصيرًا: 24 تعليمة و40 سطرًا كحد أقصى.',
+    range: 'جرّب أرقامًا أصغر.',
+    long: 'اجعل النص أقصر من 180 حرفًا.',
+    escape: 'استخدم نصًا بسيطًا أو علامة تنصيص مقابلة داخل الرسالة.'
+  };
+
+  const arabic = [
+    {
+      title: 'قل مرحبًا',
+      idea: 'بايثون لغة نعطي بها تعليمات للكمبيوتر. تكتب برنامجًا ثم تضغط تشغيل. أول تعليمة هي <code>print()</code>: تعرض رسالة في الناتج. النص يجب أن يكون بين علامتي تنصيص — وهذا ما يسمى <b>string</b>. بايثون تفرّق بين الحروف الكبيرة والصغيرة، لذا <code>print</code> بحروف صغيرة.',
+      task: 'اكتب سطر <code>print(...)</code> واحدًا فيه تحيتك، ثم اضغط تشغيل.',
+      why: 'الرسالة نص بين علامتي تنصيص. علامات التنصيص نفسها لا تُطبع.',
+      hint: 'ابدأ بـ print، ثم قوس فتح، ثم رسالتك بين تنصيص، ثم قوس إغلاق.',
+      success: 'ظهرت رسالتك في الناتج وفي فقاعة موشي. جرّب تغيير الكلمات وشغّل مرة أخرى.',
+      feedback: 'الكود عمل، لكن نحتاج سطر print يحتوي رسالة نصية.'
+    },
+    {
+      title: 'أعطها اسمًا',
+      idea: '<b>المتغير</b> اسم يشير إلى قيمة. علامة <code>=</code> تُسند قيمة؛ وليست مقارنة. بعد الإسناد استخدم الاسم بدون تنصيص لتحصل على القيمة. أسماء المتغيرات تبدأ بحرف أو <code>_</code>، وبايثون تفرّق بين الحروف الكبيرة والصغيرة.',
+      task: 'احفظ تحيتك في متغير اسمه <code>greeting</code>، ثم اطبعه.',
+      why: 'السطر الأول يخزن النص. السطر الثاني يطبع القيمة عبر اسمها.',
+      hint: 'اكتب greeting = "رسالتك" أولًا، ثم print(greeting) بدون تنصيص حول الاسم.',
+      success: 'بطاقة الاسم تعرض ما يحمله greeting. غيّر القيمة وشغّل مرة أخرى — الناتج يتبعها.',
+      feedback: 'الكود عمل، لكن نحتاج greeting مُسندًا ثم مطبوعًا باسمه.'
+    },
+    {
+      title: 'الأرقام والحساب',
+      idea: 'الأرقام لا تحتاج تنصيصًا. بايثون تحسب <code>+</code> و<code>-</code> و<code>*</code>. ينفّذ الطرف الأيمن قبل إسناد الناتج.',
+      task: 'اجعل <code>length</code> = 10 و<code>width</code> = 20. احسب <code>area = length * width</code> ثم اطبع <code>area</code>.',
+      why: '10 × 20 = 200. الأرقام بدون تنصيص لكي يتعامل معها بايثون كأرقام.',
+      hint: 'استخدم أرقامًا دون تنصيص. استخدم * للضرب ثم print(area).',
+      success: 'نجح الحساب. المساحة تظهر في البطاقة وفي الناتج.',
+      feedback: 'الكود عمل، لكن نحتاج length و width و area = length * width ثم print(area).'
+    },
+    {
+      title: 'اترك ملاحظة',
+      idea: '<b>التعليق</b> يبدأ بـ <code>#</code>. بايثون تتجاهل كل ما بعده في السطر. التعليقات تشرح الكود للإنسان ولا تغيّر الناتج.',
+      task: 'أضف تعليقًا يبدأ بـ <code>#</code> إلى برنامج قصير يطبع رسالة، ثم شغّله.',
+      why: 'التعليق يُتجاهل. print وحدها تنتج الناتج.',
+      hint: 'ضع # في بداية سطر ثم اكتب ملاحظة. السطر التالي يمكن أن يكون print.',
+      success: 'بقي التعليق في الكود لكنه لم يظهر في الناتج. هذا هو عمل التعليقات.',
+      feedback: 'الكود عمل، لكن نحتاج تعليقًا يبدأ بـ # ورسالة مطبوعة.'
+    },
+    {
+      title: 'اجمع كل شيء',
+      idea: 'يمكن للبرنامج أن يجمع ما تعلمته: متغير، نص، أرقام، print وتعليق. اقرأ الكود من الأعلى إلى الأسفل؛ بايثون تفعل نفس الشيء.',
+      task: 'أنشئ <code>name</code> باسمك، اطبعه، اطبع <code>2 + 3</code>، وأضف تعليقًا واحدًا.',
+      why: 'المتغير يطبع قيمته؛ 2 + 3 يطبع 5؛ التعليق يُتجاهل.',
+      hint: 'ابدأ بتعليق، ثم name = "اسمك"، ثم سطري print.',
+      success: 'جمعت المتغيرات والأرقام وprint والتعليق في برنامج واحد.',
+      feedback: 'الكود عمل، لكن نحتاج name مُسندًا ومطبوعًا، وحسابًا رقميًا مطبوعًا، وتعليقًا.'
+    }
+  ];
+
+  const ui = {
+    en: {
+      eyebrow: 'Lesson 1 · Getting started', chapters: 'Map', task: 'Your task', example: 'Show an example',
+      hint: 'Hint', hideHint: 'Hide hint', restart: 'Restart lesson', codeLabel: 'Write your code', run: 'Run ▶',
+      clear: 'Clear', output: 'Output', pressRun: 'press Run', next: 'Next step →', finish: 'Finish lesson',
+      codeFoot: 'Small practice editor · real Python also runs in IDLE, Jupyter or a .py file.',
+      saveLocal: 'Progress is saved in this browser. Sign in on the map to sync it.',
+      saveSynced: 'Progress is synced to your account.',
+      kicker: 'Lesson 1 complete', title: 'You can write a program',
+      copy: 'You used <b>print</b>, a <b>string</b>, a <b>variable</b>, <b>numbers</b>, <b>arithmetic</b> and a <b>comment</b>. That is the foundation for the rest of the course.',
+      review: 'Review the lesson', lang: 'العربية', langAria: 'Switch to Arabic',
+      stepOf: n => `Step ${n} of 5`, lines: n => `${n} line${n === 1 ? '' : 's'}`, noOutput: 'no output',
+      ranNoPrint: 'The program ran, but it did not print anything.',
+      fix: 'Let\'s fix that line together.',
+      tour: { back: 'Back', next: 'Next', skip: 'Skip tour', start: 'Start lesson' }
+    },
+    ar: {
+      eyebrow: 'الدرس ١ · البداية', chapters: 'الخريطة', task: 'مهمتك', example: 'اعرض مثالًا',
+      hint: 'تلميح', hideHint: 'إخفاء التلميح', restart: 'إعادة الدرس', codeLabel: 'اكتب الكود', run: 'شغّل ▶',
+      clear: 'مسح', output: 'الناتج', pressRun: 'اضغط تشغيل', next: 'الخطوة التالية ←', finish: 'إنهاء الدرس',
+      codeFoot: 'محرر تدريبي صغير · بايثون الحقيقية تعمل أيضًا في IDLE أو Jupyter أو ملف .py.',
+      saveLocal: 'يُحفظ تقدمك في هذا المتصفح. سجّل الدخول من الخريطة للمزامنة.',
+      saveSynced: 'تقدمك متزامن مع حسابك.',
+      kicker: 'اكتمل الدرس الأول', title: 'تستطيع كتابة برنامج',
+      copy: 'استخدمت <b>print</b> و<b>النص</b> و<b>المتغير</b> و<b>الأرقام</b> و<b>الحساب</b> و<b>التعليق</b>. هذه أساس بقية الدورة.',
+      review: 'راجع الدرس', lang: 'English', langAria: 'Switch to English',
+      stepOf: n => `الخطوة ${n} من ٥`, lines: n => `${n} سطر`, noOutput: 'لا ناتج',
+      ranNoPrint: 'نفّذ البرنامج لكنه لم يطبع شيئًا.',
+      fix: 'لنصلح هذا السطر معًا.',
+      tour: { back: 'السابق', next: 'التالي', skip: 'تخطي الجولة', start: 'ابدأ الدرس' }
+    }
+  };
+
+  const tourSteps = [
+    { target: '.mochi', title: { en: 'Hi! I’m Mochi', ar: 'أهلًا! أنا موشي' }, copy: { en: 'I’ll guide you through your first Python program, one small step at a time.', ar: 'سأرشدك خلال أول برنامج بايثون، خطوة صغيرة في كل مرة.' } },
+    { target: '.lesson-panel', title: { en: 'Read the idea first', ar: 'اقرأ الفكرة أولًا' }, copy: { en: 'Each step gives you one idea, one small task, and an example you can open if you need it.', ar: 'كل خطوة تعطيك فكرة ومهمة صغيرة ومثالًا تفتحه إذا احتجت.' } },
+    { target: '.code-panel', title: { en: 'Your code goes here', ar: 'كودك هنا' }, copy: { en: 'Type your own code. Examples are never inserted for you — you write every line.', ar: 'اكتب كودك بنفسك. الأمثلة لا تُدرج تلقائيًا — أنت تكتب كل سطر.' } },
+    { target: '#run', title: { en: 'Press Run', ar: 'اضغط تشغيل' }, copy: { en: 'Run executes your program. Ctrl+Enter also works.', ar: 'تشغيل ينفّذ برنامجك. Ctrl+Enter يعمل أيضًا.' } },
+    { target: '#output', title: { en: 'Output and Mochi', ar: 'الناتج وموشي' }, copy: { en: 'The result appears here and in Mochi’s bubble. If something fails, the error tells you the line.', ar: 'تظهر النتيجة هنا وفي فقاعة موشي. إذا فشل شيء، يخبرك الخطأ بالسطر.' } }
+  ];
+
+
+  function say(text) {
+    if (!text) {
+      bubble.classList.add('hidden');
+      return;
+    }
+    bubble.textContent = text;
+    bubble.classList.remove('hidden');
+  }
+  function setFeedback(text) {
+    if (!text) {
+      feedback.hidden = true;
+      return;
+    }
+    feedback.textContent = text;
+    feedback.hidden = false;
+  }
+  function setError(text) {
+    if (!text) {
+      error.hidden = true;
+      return;
+    }
+    error.textContent = text;
+    error.hidden = false;
+  }
+  function updateDots() {
+    dots.innerHTML = '';
+    steps.forEach((s, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = i + 1;
+      b.title = (lang === 'ar' ? arabic[i] : s).title;
+      b.className = completed.has(i) ? 'done' : '';
+      if (i === current) b.classList.add('current');
+      b.disabled = i !== current && !completed.has(i);
+      b.addEventListener('click', () => {
+        if (i === current) return;
+        if (i > 0 && !completed.has(i - 1)) return;
+        loadStep(i);
+      });
+      dots.append(b);
+    });
+  }
+  const feedbackMessages = [
+    'The code ran, but we still need a print line with a text message.',
+    'The code ran, but we still need greeting assigned and then printed by name.',
+    'The code ran, but we still need length, width, area = length * width, and print(area).',
+    'The code ran, but we still need a # comment and a printed message.',
+    'The code ran, but we still need name assigned, name printed, a number calculation printed, and a comment.'
+  ];
+
+  function renderSaveState() {
+    const el = $('#saveState');
+    if (!el) return;
+    const u = ui[lang];
+    el.textContent = window.MochiAuth && window.MochiAuth.user ? u.saveSynced : u.saveLocal;
+  }
+  function renderChrome() {
+    const u = ui[lang];
+    $('#lessonEyebrow').textContent = u.eyebrow;
+    $('#chaptersLink').textContent = lang === 'ar' ? 'الخريطة' : 'Map';
+    $('#returnToMap').textContent = lang === 'ar' ? 'العودة إلى خريطة الجزر ←' : 'Return to your island map →';
+    $('#taskLabel').textContent = u.task;
+    $('#exampleSummary').textContent = u.example;
+    $('#codeLabel').textContent = u.codeLabel;
+    $('#run').textContent = u.run;
+    $('#clear').textContent = u.clear;
+    $('#outputLabel').textContent = u.output;
+    $('#outputHint').textContent = outputCount ? u.lines(outputCount) : u.pressRun;
+    $('#codeFoot').textContent = u.codeFoot;
+    renderSaveState();
+    $('#restart').textContent = u.restart;
+    code.placeholder = lang === 'ar' ? 'اكتب كود بايثون هنا…' : 'Type your Python here…';
+    $('#completionKicker').textContent = u.kicker;
+    $('#completionTitle').textContent = u.title;
+    $('#completionCopy').innerHTML = u.copy;
+    $('#review').textContent = u.review;
+    langBtn.textContent = u.lang;
+    langBtn.setAttribute('aria-label', u.langAria);
+    hintBtn.textContent = hint.hidden ? u.hint : u.hideHint;
+    tourLang.textContent = u.lang;
+    if (completed.has(current)) {
+      nextBtn.textContent = current === steps.length - 1 ? u.finish : u.next;
+    }
+  }
+
+  function renderStepFields(reset) {
+    const s = steps[current], L = lang === 'ar' ? arabic[current] : s, u = ui[lang];
+    stepBadge.textContent = u.stepOf(current + 1);
+    stepTitle.textContent = L.title;
+    idea.innerHTML = L.idea;
+    task.innerHTML = L.task;
+    exampleCode.textContent = s.example;
+    exampleWhy.textContent = L.why;
+    hint.textContent = L.hint;
+    if (reset) {
+      exampleBox.open = false;
+      hint.hidden = true;
+      success.hidden = true;
+      setFeedback('');
+      setError('');
+      lastError = null;
+    }
+    if (completed.has(current)) {
+      successMsg.innerHTML = L.success;
+      success.hidden = false;
+      nextBtn.textContent = current === steps.length - 1 ? u.finish : u.next;
+    }
+    hintBtn.textContent = hint.hidden ? u.hint : u.hideHint;
+  }
+
+  function showError() {
+    if (!lastError) {
+      setError('');
+      return;
+    }
+    const dict = lang === 'ar' ? errorsAr : errors;
+    setError(`${lang === 'ar' ? 'السطر' : 'Line'} ${lastError.line}: ${dict[lastError.kind] || dict.expression}`);
+  }
+
+  function applyLanguage(next) {
+    lang = next;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    renderChrome();
+    renderStepFields(false);
+    if (!feedback.hidden) setFeedback(lang === 'ar' ? arabic[current].feedback : feedbackMessages[current]);
+    if (!error.hidden) showError();
+    if (tourIndex >= 0) renderTour();
+    if (!success.hidden) successMsg.innerHTML = (lang === 'ar' ? arabic[current] : steps[current]).success;
+  }
+
+  function loadStep(i) {
+    if (!restoring) drafts[current] = code.value;
+    current = i;
+    const u = ui[lang];
+    code.value = drafts[i] || '';
+    output.textContent = '';
+    outputCount = 0;
+    $('#outputHint').textContent = u.pressRun;
+    say('');
+    variableTag.hidden = true;
+    areaCard.hidden = true;
+    setFeedback('');
+    setError('');
+    lastError = null;
+    renderStepFields(true);
+    updateDots();
+    renderChrome();
+    code.focus();
+    persist();
+  }
+  function markComplete() {
+    completed.add(current);
+    updateDots();
+    const L = lang === 'ar' ? arabic[current] : steps[current];
+    successMsg.innerHTML = L.success;
+    success.hidden = false;
+    nextBtn.textContent = current === steps.length - 1 ? ui[lang].finish : ui[lang].next;
+    persist();
+  }
+  function run() {
+    setError('');
+    setFeedback('');
+    lastError = null;
+    let result;
+    try {
+      result = E.run(code.value);
+    } catch (e) {
+      lastError = { line: e.line || 1, kind: e.kind };
+      showError();
+      say(ui[lang].fix);
+      return;
+    }
+    outputCount = result.output.length;
+    output.textContent = result.output.join('\n');
+    $('#outputHint').textContent = outputCount ? ui[lang].lines(outputCount) : ui[lang].noOutput;
+    say(outputCount ? result.output.join('\n') : ui[lang].ranNoPrint);
+    if (current === 1) {
+      const value = result.env.get('greeting');
+      if (typeof value === 'string' && value.trim()) {
+        variableValue.textContent = value;
+        variableTag.hidden = false;
+      }
+    }
+    if (current === 2) {
+      const l = result.env.get('length'), w = result.env.get('width'), a = result.env.get('area');
+      if (Number.isFinite(a) && Number.isFinite(l) && Number.isFinite(w)) {
+        areaValue.textContent = a;
+        areaLabel.textContent = `${l} × ${w} = ${a}`;
+        areaCard.hidden = false;
+      }
+    }
+    const ok = steps[current].validate(result);
+    if (ok) {
+      markComplete();
+      setFeedback('');
+    } else {
+      success.hidden = true;
+      setFeedback(lang === 'ar' ? arabic[current].feedback : feedbackMessages[current]);
+    }
+  }
+
+  function positionTour() {
+    if (tourIndex < 0) return;
+    const targetSelector = innerWidth < 760 && tourIndex === 1 ? '.task' : tourSteps[tourIndex].target;
+    const target = document.querySelector(targetSelector);
+    if (!target) return;
+    if (innerWidth <= 680 && target.closest('.hud')) target.scrollIntoView({block:'nearest'});
+    const r = target.getBoundingClientRect();
+    const w = Math.min(342, innerWidth - 24);
+    tourCard.style.width = w + 'px';
+    const h = tourCard.offsetHeight;
+    let left = Math.max(12, Math.min(innerWidth - w - 12, r.left));
+    let top = r.bottom + 12;
+    if (top + h > innerHeight - 12) top = Math.max(12, r.top - h - 12);
+    if (top < 12) top = 12;
+    tourCard.style.left = left + 'px';
+    tourCard.style.top = top + 'px';
+    tourSpotlight.style.left = Math.max(2, r.left - 6) + 'px';
+    tourSpotlight.style.top = Math.max(2, r.top - 6) + 'px';
+    tourSpotlight.style.width = Math.min(r.width + 12, innerWidth - 4) + 'px';
+    tourSpotlight.style.height = Math.min(r.height + 12, innerHeight - 4) + 'px';
+  }
+  function renderTour() {
+    const t = tourSteps[tourIndex], u = ui[lang];
+    tourLayer.hidden = false;
+    hud.inert = true;
+    tourCount.textContent = `${tourIndex + 1} / ${tourSteps.length}`;
+    tourTitle.textContent = t.title[lang];
+    tourCopy.textContent = t.copy[lang];
+    tourBack.disabled = tourIndex === 0;
+    tourBack.textContent = u.tour.back;
+    tourNext.textContent = tourIndex === tourSteps.length - 1 ? u.tour.start : u.tour.next;
+    tourSkip.textContent = u.tour.skip;
+    tourLang.textContent = u.lang;
+    requestAnimationFrame(positionTour);
+  }
+  function beginTour() {
+    tourIndex = 0;
+    renderTour();
+  }
+  function endTour() {
+    tourIndex = -1;
+    tourLayer.hidden = true;
+    hud.inert = false;
+    code.focus({preventScroll:true});
+    if (innerWidth < 760) document.getElementById("lessonDock").scrollTop = 0;
+  }
+
+  $('#run').addEventListener('click', run);
+  code.addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+      e.preventDefault();
+      run();
+    }
+  });
+  code.addEventListener('input', () => {
+    drafts[current] = code.value;
+    setError('');
+    persist();
+  });
+  hintBtn.addEventListener('click', () => {
+    hint.hidden = !hint.hidden;
+    hintBtn.textContent = hint.hidden ? ui[lang].hint : ui[lang].hideHint;
+  });
+  $('#clear').addEventListener('click', () => {
+    code.value = '';
+    drafts[current] = '';
+    setError('');
+    setFeedback('');
+    output.textContent = '';
+    outputCount = 0;
+    $('#outputHint').textContent = ui[lang].pressRun;
+    say('');
+    success.hidden = true;
+    variableTag.hidden = true;
+    areaCard.hidden = true;
+    code.focus();
+    persist();
+  });
+  nextBtn.addEventListener('click', () => {
+    if (current < steps.length - 1) {
+      loadStep(current + 1);
+    } else {
+      complete.hidden = false;
+    }
+  });
+  $('#restart').addEventListener('click', () => {
+    completed = new Set();
+    drafts.fill('');
+    complete.hidden = true;
+    loadStep(0);
+  });
+  $('#review').addEventListener('click', () => {
+    complete.hidden = true;
+    loadStep(0);
+  });
+
+
+
+  // Resizable bottom workspace (desktop). Height is remembered locally.
+  const lessonDock = document.getElementById('lessonDock');
+  const dockResize = document.getElementById('dockResize');
+  if (lessonDock && dockResize) {
+    const minH = 240;
+    const maxH = () => Math.max(minH, window.innerHeight - 230);
+    const saved = Number(localStorage.getItem('mochi.lessonDockHeight'));
+    if (saved >= minH) document.documentElement.style.setProperty('--dock-h', Math.min(saved, maxH()) + 'px');
+    let startY = 0, startH = 0, dragging = false;
+    const apply = h => {
+      const next = Math.max(minH, Math.min(maxH(), h));
+      document.documentElement.style.setProperty('--dock-h', next + 'px');
+      localStorage.setItem('mochi.lessonDockHeight', String(Math.round(next)));
+    };
+    dockResize.addEventListener('pointerdown', event => {
+      if (matchMedia('(max-width:759px)').matches) return;
+      dragging = true; startY = event.clientY; startH = lessonDock.getBoundingClientRect().height;
+      document.body.classList.add('dock-resizing'); dockResize.setPointerCapture(event.pointerId);
+    });
+    dockResize.addEventListener('pointermove', event => { if (dragging) apply(startH + startY - event.clientY); });
+    const endDrag = () => { dragging = false; document.body.classList.remove('dock-resizing'); };
+    dockResize.addEventListener('pointerup', endDrag);
+    dockResize.addEventListener('pointercancel', endDrag);
+    dockResize.addEventListener('keydown', event => {
+      if (event.key !== 'ArrowUp' && event.key !== 'ArrowDown') return;
+      event.preventDefault();
+      apply(lessonDock.getBoundingClientRect().height + (event.key === 'ArrowUp' ? 24 : -24));
+    });
+    window.addEventListener('resize', () => {
+      const h = lessonDock.getBoundingClientRect().height;
+      if (!matchMedia('(max-width:759px)').matches) apply(h);
+    });
+  }
+
+  const focusBtn = document.getElementById('focusBtn');
+  const focusRestore = document.getElementById('focusRestore');
+  function setFocusMode(on) {
+    document.body.classList.toggle('focus-mode', on);
+    focusRestore.hidden = !on;
+    focusBtn?.setAttribute('aria-pressed', String(on));
+  }
+  focusBtn?.addEventListener('click', () => setFocusMode(true));
+  focusRestore?.addEventListener('click', () => setFocusMode(false));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') setFocusMode(false);
+  });
+
+  langBtn.addEventListener('click', () => applyLanguage(lang === 'en' ? 'ar' : 'en'));
+  tourLang.addEventListener('click', () => applyLanguage(lang === 'en' ? 'ar' : 'en'));
+  tourNext.addEventListener('click', () => {
+    if (tourIndex === tourSteps.length - 1) endTour();
+    else { tourIndex++; renderTour(); }
+  });
+  tourBack.addEventListener('click', () => {
+    if (tourIndex > 0) { tourIndex--; renderTour(); }
+  });
+  tourSkip.addEventListener('click', endTour);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && tourIndex >= 0) endTour();
+  });
+  window.addEventListener('resize', () => { if (tourIndex >= 0) positionTour(); });
+  window.addEventListener('scroll', () => { if (tourIndex >= 0) positionTour(); }, { passive: true });
+
+  if (window.MochiAuth) {
+    window.MochiAuth.onChange(async user => {
+      renderSaveState();
+      if (!initialized || !user) return;
+      try {
+        const remote = await window.MochiAuth.loadProgress();
+        if (remote) applyState(remote);
+        else await window.MochiAuth.saveProgress(captureState());
+      } catch (e) { console.warn('Progress sync failed', e); }
+    });
+  }
+
+  renderChrome();
+  loadStep(0);
+  restoreProgress()
+    .catch(err => console.warn('Progress restore failed', err))
+    .finally(() => setTimeout(beginTour, 500));
+})();
+</script>
+<script>
+// Keep the farm visible when the phone keyboard changes the available height.
+(() => {
+ const phone = matchMedia('(max-width:680px)');
+ const scene = document.querySelector('.world');
+ const artwork = scene.querySelector('img');
+ function placeMochi() {
+  const root = document.documentElement.style;
+  const desktop = innerWidth >= 760;
+  if (!phone.matches && !desktop) {
+   ['--mochi-x','--mochi-y','--mochi-size','--mochi-foot-padding','--farm-grid-size'].forEach(name => root.removeProperty(name));
+   return;
+  }
+  if (!artwork.naturalWidth || !artwork.naturalHeight) return;
+  const r = scene.getBoundingClientRect();
+  const fit = getComputedStyle(artwork).objectFit;
+  const scale = (fit === 'contain' ? Math.min : Math.max)(r.width / artwork.naturalWidth, r.height / artwork.naturalHeight);
+  const drawnWidth = artwork.naturalWidth * scale;
+  const drawnHeight = artwork.naturalHeight * scale;
+  const offsetY = phone.matches ? 0 : (r.height - drawnHeight) / 2;
+  const size = phone.matches ? Math.max(52, Math.min(84, r.height * .22)) : Math.max(90, Math.min(160, drawnWidth * .14));
+  // Ground contact on the dirt path OUTSIDE the entrance gate, not the cottage door or river.
+  root.setProperty('--mochi-x', `${r.left + (r.width - drawnWidth) / 2 + drawnWidth * .54}px`);
+  root.setProperty('--mochi-y', `${r.top + offsetY + drawnHeight * .70}px`);
+  root.setProperty('--farm-grid-size', `${160 * scale}px`);
+  root.setProperty('--mochi-size', `${size}px`);
+  // The source sprite has 13 transparent pixels below its feet (512px wide).
+  root.setProperty('--mochi-foot-padding', `${size * 13 / 512}px`);
+ }
+ artwork.addEventListener('load', placeMochi);
+ new ResizeObserver(placeMochi).observe(scene);
+ function fit() {
+  if(phone.matches) document.documentElement.style.setProperty('--lesson-height', `${window.visualViewport?.height || innerHeight}px`);
+  else document.documentElement.style.removeProperty('--lesson-height');
+  requestAnimationFrame(placeMochi);
+ }
+ window.visualViewport?.addEventListener('resize', fit);
+ window.addEventListener('resize', fit);
+ phone.addEventListener('change', fit);
+ document.getElementById('run').addEventListener('click', () => {
+  if(phone.matches) document.getElementById('code').blur();
+ });
+ fit();
+})();
+</script>
+</body>
+</html>

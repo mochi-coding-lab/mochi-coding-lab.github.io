@@ -135,3 +135,6 @@ Same checkpoint package updated: outputs/2026-10-21-checkpoint-world-overview.md
 
 ### 2026-10-21 — Approved public release, ENG-006
 Owner approved/publicly deployed living-map homepage with first playable five-activity island. Agent verified full guest flow on HTTPS including persistence and restoration. Four future islands/finale remain upcoming; no learner or audio-quality findings. Existing package updated with 25-second reveal, subtitles, capture plan and limits. Social draft only: CAPTURE NOW / POST LATER. Website publication authorized separately; no social publication.
+
+### 2026-10-26 — ENG-007 working First Hello reward
+Owner approved parchment journey style and Chapter1 build. Actual local Python-backed welcome→independent message→badge→flower equip flow passes browser tests. Other islands locked; real-account/native-device/learning validation pending; new chapter not published. [Capture package](outputs/2026-10-26-checkpoint-first-hello-reward.md): CAPTURE NOW / POST LATER. No social recording, outreach, publication or learner findings.

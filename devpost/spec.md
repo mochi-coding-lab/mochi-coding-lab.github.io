@@ -1,88 +1,34 @@
 ---
 doc: spec
 status: draft
-updated: 2026-10-25
+updated: 2026-10-26
 ---
 
 # Mochi — current technical plan
 
-This current-state summary is reconciled from source, tests and owner decisions. Historical implementation notes remain in little-acres/spec.md below its current summary.
+## Source and build
+Framework-free static site. Source devpost/little-acres/, deploy public/. build-public.cjs explicit allowlist copies runtime, art, licenses and game files; excludes PDFs, planning, screenshots and prototype review pages. first-lesson.html is the new scene/UI; farm-chapter.css, farm-chapter-content.js and farm-chapter.js own layout, bilingual authored tasks and orchestration.
 
-## Architecture and source of truth
-- Framework-free HTML/CSS/JavaScript static site; no package installation or backend server is required for local guest development.
-- Maintained site sources: devpost/little-acres/. Deployable files: public/.
-- Regenerate public/ with node devpost/little-acres/build-public.cjs. Its explicit allowlist excludes planning documents and review screenshots.
-- index.html is the single responsive living map for phone, tablet and desktop. phone.html only redirects legacy links to index.html; feature controllers are shared.
-- first-lesson.html owns the existing five-activity lesson and bilingual UI; chapter-engine.js is a bounded print/assignment/arithmetic/comment interpreter, not general Python.
+## Python
+farm-python-worker.js loads self-hosted Pyodide0.27.7 (CPython3.12.7) from python/. Bundled loader, asm JS, WASM, stdlib ZIP and lock metadata total about14MB; MIT/PSF license files included. Worker exchanges JSON serializable primitives/events/AST summaries. Not a server or JavaScript eval substitute. Farm methods prepare_bed/plant/water explicitly game-provided. AST checks require named values be used in print and area use a multiplication of dimensions; id task displays actual Python identity. Output bounded5000 chars, input12000, run timeout7s after45s initialization cap. Stop resets worker/pending requests. This prevents persistent UI blocking, not a multi-tenant security service; no server credentials in worker. Notebook uses a shared namespace within current worker; stop/reload requires rerunning cells.
 
-## Phone lesson and grid
-lesson-phone.css supplies the approved farm-first phone split. The original optimized restoration-shell-1600.webp and play-mochi-512.webp remain in use. Image-relative coordinates and ResizeObserver/VisualViewport handling keep Mochi on the dirt path outside the entrance gate as the scene scales. The farm-square-grid is decorative, noninteractive and phone-scoped; its size follows artwork scale. There is no arrival controller, phone-walk.js, route/step parser, numbered movement path or generated paving asset in the active build.
+## Progress and compatibility
+Key mochi.farm.chapter1.v2, stable activity IDs, per-activity drafts/outputs, primitive Python values, world fields, equip/mute/language, timestamps. XP recomputed from unique completed IDs (8×50+100 full chapter), not mutable incremental counter. Old mochi.lesson1.progress.v1 remains untouched. Homepage supports either format and12-activity restoration; auth remote firstMorning imported without interpreting old5 as12. Existing auth bridge preserved; new state nested under firstMorning, previous remote fields retained. Completion union on merge, newer content preferred. Mocked auth merge/load/save verified; real account/OAuth not newly verified.
 
-## State and services
-Existing lesson state and draft handling remain intact. Guest progress uses browser storage; auth-client.js provides the existing Supabase account/progress bridge with browser-safe public configuration. Do not add private credentials to repository files. OAuth/provider and real-account verification remain separate pending work.
+## Scene/assets
+art/farm-first-morning.webp image edit removes lower bed; original master retained. Prepared soil reuses original image clipped to same bed polygon; plants/grid/dynamic text/chest/sign are SVG layers. art/farm-rewards.webp transparent three-cell atlas provides sprout rank, First Hello and daisy pin. farm-rank-gallery.webp supplies approved future medallion references rendered locked. Mochi separately grounded, shrinks on narrative entry, equipped pin rendered on hat. No per-activity whole-scene regeneration.
 
-## Validation commands
-- node devpost/little-acres/check-public-map.cjs
-- node devpost/little-acres/check-map-islands.cjs
-- node devpost/little-acres/check-map-nature.cjs
-- node devpost/little-acres/check-map-water-fallback.cjs
-- node devpost/little-acres/check-chapter-flow.cjs and check-chapter-language.cjs cover the related earlier chapter runtime; they do not replace a first-lesson.html browser playthrough.
-- Check the selected first lesson in a real browser at narrow phone widths and desktop: five activities, errors, Next/Finish, visible scene feedback and map return. Test language behavior when relevant. Keep physical-device/keyboard and assistive-technology outcomes separate from emulation.
-- Legacy little-acres/check.cjs targets an obsolete homepage; do not call it proof of current homepage readiness.
+## UI
+Focus-on-farm shows the full contained illustration; Escape returns to controls. Phone<760 scene46% available visual viewport. Tablet760–1199 scene62%, practice controls below in two columns. Desktop>=1200 sidebar350–430px. Viewport listener handles keyboard resize; native validation pending. Dialogs native modal/focus restoration, captions/live statuses, reduced motion and explicit mute. Actual effects are synthesized short chime/confetti; no recorded/pitched voice or unimplemented ambient crossfade claimed. English/Arabic authored copy, English badge identity labels, Python LTR.
 
-## Local preview and publication
-Serve public/ with python3 -m http.server 8080 --bind 127.0.0.1 --directory public from the repository root. A cloud loopback address is not a phone-accessible shared preview; use screenshots for review unless an actual accessible preview is provided.
+## Checks
+- python devpost/little-acres/check-first-morning.py (Python Playwright + Chromium): all12 activities, error case, file .py export/open, .ipynb export, no duplicate XP, reload/pin,320/390/820/1180/1440 widths, Arabic direction, Stop.
+- python devpost/little-acres/check-first-morning-edge.py: hardcoded-answer rejection, timeout/restart, mocked account merge, new homepage progress, storage warning.
+- node devpost/little-acres/check-public-map.cjs; check-map-islands.cjs; check-map-nature.cjs; check-map-water-fallback.cjs.
+- Historical check-chapter-flow/check-chapter-language target old bounded prototypes; not proof of the new chapter.
 
-Keep using the existing branch and push changes to main. .github/workflows/pages.yml has workflow_dispatch only. A commit or push must not publish the site. Run that workflow only after the owner explicitly requests publication. Preserve other concurrent repository changes; never force-push to work around them.
+## Publication
+Repository mochi-coding-lab/mochi-coding-lab.github.io; existing branch pushes main. Pages deploys public/ only, workflow_dispatch-only. No publish authorized in this implementation step. Serve public/ locally for review. Original pre-redesign first-lesson preserved in archive/lesson-before-first-morning/; prior planning archived separately. Legacy helper files remain to avoid breaking older prototypes; new chapter does not load chapter-engine.js.
 
-## Current limitations and next work
-Lesson/grid design editing is paused; the desktop map sharpness correction is authorized. Grid use/movement remains deferred; no movement implementation is authorized by the presence of the grid. Native phone keyboard/touch/accessibility review remains pending. Real account/provider checks are not claimed passed. Later islands/finale, curriculum expansion and a general Python runtime are outside the current proof-of-concept.
-
-## Desktop map sharpness — 2026-10-24
-world-map-living.js now composites animated water only over the static original map. WebGL requests an alpha canvas with straight alpha and outputs the conservative water mask as alpha; dry land is transparent rather than resampled/repainted. The subtle foliage warp is removed from this canvas pass. Canvas2D clears to transparency each frame and draws only masked displaced water; fallback resolution increases from 960×640 to source 1536×1024. Existing visibility/pause/reduced-motion/vision behavior remains. Homepage script version v4 refreshes cached renderer code. No new/generated/upscaled art or phone/lesson design changes.
-
-## Map audio startup — 2026-10-24
-The unified homepage attempts playback immediately on load at all widths, using the existing recording bundle. This supersedes the former separate-page loading paths. Map controls are mounted first and remain usable while audio decodes. world-map-nature.js v5 tries AudioContext.resume immediately; browsers may require user activation, so trusted pointer/click/key and Sound presses retry then. First press when suspended/pending/failed enables playback rather than muting. Explicit mute, visibility suspend/resume and duplicate-loop prevention remain intact. Phone HUD exposes actual playback state. No browser-policy bypass or claim of guaranteed unprompted sound on every browser.
-
-## Grounded outside-gate character — 2026-10-24
-Use the same image-space ground point (54% across,70% down) on phone and desktop. Placement respects object-fit cover on phones, contain/letterboxing on desktop, and focus-mode scene resizing. Apply the sprite’s 13px bottom transparency correction at rendered scale, disable idle vertical bobbing on the scene character and add a small contact shadow. Preserve original image, square grid, lesson controls and logic. Tablet layout remains unchanged. Commit/push only.
-
-
-### Approved responsive lesson release - 2026-10-24
-Owner resumed layout editing and approved the current phone scene/sheet with compact controls and 56px Mochi, plus a separate sidebar from 760px upward (250-380px wide). This supersedes the previous design pause for these changes. Phone scene uses the owner screenshot reference; desktop image-grounded character remains. Existing manual-only publication policy, map/audio changes and lesson behavior retained. Owner explicitly requested commit, push and publish. Public checks pass; release verification pending.
-
-## Unified responsive homepage — 2026-10-25
-index.html owns one map DOM and loads each shared controller once. Responsive CSS and matchMedia at 680px choose presentation, with no navigation. A picture/source chooses existing phone WebP artwork while desktop uses the original full-resolution PNG; the restoration toggle also updates the phone source. world-map-mobile.js supplies pan/zoom and world-map-phone.js supplies the compact HUD using the same audio/progress controllers as desktop. phone.html is a query/hash-preserving compatibility redirect to index.html, with a fallback link. Close the phone island list on desktop transition; stop island-row click bubbling so its newly opened detail dialog stays open. Map completed-progress text to restored phone HUD state. Retain one renderer/player and native autoplay restrictions.
-
-Origin remote now points to https://github.com/mochi-coding-lab/mochi-coding-lab.github.io.git. GitHub metadata confirms the root Pages URL. Preserve workflow_dispatch-only deployment. Real-account provider redirect allowlists for the new origin remain unverified; no configuration change or real sign-in is claimed.
-
-## Tablet lesson controls below the farm — 2026-10-25
-Owner requested tablet controls underneath the farm image. At viewport widths760–1199px, use a full-width contained farm above a lower workspace with lesson and code windows side by side. Keep the phone scene/sheet below760px and desktop sidebar from1200px. Anchor Mochi to the farm artwork on tablets as the scene changes size; keep speech and variable/area feedback in the farm region. Focus-on-farm expands the scene. This supersedes the earlier tablet-sidebar decision only. Existing five activities and homepage behavior remain unchanged. Commit/push only; not published.
-
-## Larger tablet farm — 2026-10-25
-Owner requested the tablet farm take more space than the controls. Tablet760–1199px scene now occupies62% of viewport height; the shorter lesson/code windows remain underneath and independently scrollable. The farm image fills the scene with a centered cover crop instead of portrait letterboxing; artwork-relative Mochi placement follows the crop. Focus-on-farm still reveals the full contained illustration. Phone and desktop layouts are unchanged. This supersedes the prior48%-height contained tablet scene. Commit only while organization push access is blocked; not published.
-
-## Release/access update — 2026-10-25
-Organization Git push access verified after owner connector installation. Deployed application dbb96b0 via one-time commit-gated release ae516f5; Pages run40223906581 Success. Restored workflow_dispatch-only. API and direct Pages cloud access remain network-blocked, distinct from restored Git permission. Earlier unpublished status is historical.
-
-## Full-resolution responsive map — 2026-10-25
-Owner reported poor live map quality. Removed the phone picture source advertised as360px: it selected480–900px artwork for a1120px pannable/zoomable scene. All viewport sizes now use1536×1024 original-detail lossless WebP for both abandoned and restored map imagery; partial restoration uses the same full-detail restored asset. Original artwork unchanged; lossless decoded RGB pixels verified against PNG sources. Vision toggle shares the same high-resolution paths. Build allowlist updated, phone/desktop source selection and interactions checked. Asset sizes are about2.6/2.8MB; no claim of added detail beyond the original resolution. Commit/push only; this correction needs explicit publication approval.
-
-## Full-resolution map published — 2026-10-25
-Owner explicitly requested deployment of the full-resolution map fix. Pages run40224663297 reports Success for release33d42e8; public files exactly match tested application f82bf5a. Both map states and the partial-restoration layer use original1536×1024 lossless artwork at all screen sizes. Used established one-time exact-message-gated release because deployment API remains cloud-network blocked; restored workflow_dispatch-only afterward. Future pushes do not publish. Cloud direct Pages access remains blocked, so physical-device visual review is still the owner’s next check.
-
-## First-day farm curriculum direction — 2026-10-25
-Owner approved covering every topic in the supplied COMP106 Topic1 resource, with as many farm-related activities as needed; learner choices for farm name/crop/supply quantities; editable scene objects, including creating a bed on unprepared ground before seeding. This supersedes the fixed-five-exercise target and original-artwork-only restriction for the proposed redesign. Existing published five-activity lesson remains current implementation until replaced and tested. Proposed sequence/source mapping: lesson1-first-day-plan.md. Sequence, APIs, runtime and individual activities remain proposals; no new gameplay/artwork implemented or published.
-
-## All-activity design preview — 2026-10-25
-A separate interactive design preview now covers all12 proposed activities: little-acres/lesson1-design-preview.html (excluded from public build). Navigation and before/after simulations support farm-name, crop, seed-count and bed-size choices. It does not execute Python or validate learning; APIs, gate/soil/sign/chest overlays, notebook and object inspector are concepts, not final features. Existing live lesson unchanged. Chromium checks cover all12 views, custom name/seed quantity and phone/tablet overflow without JS errors. Review export /tmp/mochi-first-day-interactive-preview.html embeds assets; two six-activity overview sheets and screen-size previews are local artifacts.
-
-
-## Master references and placement plan — 2026-10-26
-Owner authorized master-reference selection and interaction-location planning before art generation. Selected existing restoration-shell-1600.webp farm and play-mochi-512.webp character as visual masters. Proposed locations: reuse lower bed for editable planting patch; name sign on courtyard below cottage/right of bed; supply chest inside fence/right of gate; reuse existing entrance with Mochi outside. Preserve perspective, warm painterly style and natural ground; keep required targets within shared phone crop. Notebook/inspection remain interface/close-up rather than large landscape props. Full plan: design/lesson1-scene-plan.md; annotated reference: design/lesson1-scene-plan.html (not public). Chromium320/390/430 phones,820 tablet and1440 desktop: proposed zones retained inside crop; no overflow/JS errors. Locations need owner review; no final objects generated, original raster altered or live lesson changed. No publication.
-
-## Guided opening review — 2026-10-26
-Owner rejected beginning with unexplained gate.open()/mochi.enter() and requested mission/explanation before code/result. Created isolated lesson1-opening-preview.html: mission overview, narrative entry without typed game APIs, explained print example, guided learner greeting, visible board output, then an independent new-message task. Shows relationship of Python print output to this game’s board explicitly. Limited single plain-string print parser, not full Python; empty/starter, case, syntax and repeated independent-message feedback tested. English design preview only; final artwork, full Python runtime, Arabic, notebook and curriculum remain unimplemented. Chromium390/820/1440 six-screen flow passes without JS errors/overflow. Export /tmp/mochi-guided-opening-preview.html and opening overview sheets available. Preview request is not acceptance of final lesson; live site unchanged. Gate-first coding proposal is superseded.
-
-## Five-resource curriculum/reward blueprint — 2026-10-26
-Located all five supplied PDFs in resources/; extracted topic contents and drafted design/curriculum-rewards-master-plan.md. Proposal: Farm/Topic1 introduction, Watermill/Topic2 programming and debugging, Glass Garden/Topic3 expressions/types/collections/input, Lighthouse/Topic4 conditions/exceptions, Orchard/Topic5 loops; integrated finale across existing islands. Six ranks span five chapters plus finale, rather than all consumed in Topic1. Skill assignments follow actual PDFs, not generic functions/lists progression. Badges/XP/cosmetics and unlock rules are proposed; no next-island curriculum, rewards or runtime implemented/unlocked/published. Owner review pending. Existing live site unchanged.
+## Release status
+Implemented for local review; not published. Last confirmed live application remains full-resolution map release33d42e8 / f82bf5a, Pages run40224663297. The owner said to start Chapter1 and retain the parchment reward UI, not deploy it. Keep workflow_dispatch-only; commit/push does not publish.
