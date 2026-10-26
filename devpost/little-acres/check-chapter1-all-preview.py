@@ -7,7 +7,7 @@ with sync_playwright() as p:
  b=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
  page=b.new_page(viewport={'width':390,'height':844},reduced_motion='reduce');errors=[];requests=[];page.on('pageerror',lambda e:errors.append(str(e)));page.on('request',lambda r:requests.append(r.url) if r.url.startswith(('http:','https:')) else None)
  page.set_content(file.read_text());page.wait_for_function("document.getElementById('actor').dataset.state==='idle'");page.wait_for_function("!document.getElementById('run').disabled")
- src=page.locator('#farmArt').get_attribute('src');assert hashlib.sha256(base64.b64decode(src.split(',',1)[1])).digest()==hashlib.sha256(file.with_name('art').joinpath('farm-abandoned-morning.webp').read_bytes()).digest()
+ src=page.locator('#farmArt').get_attribute('src');assert hashlib.sha256(base64.b64decode(src.split(',',1)[1])).digest()==hashlib.sha256(file.with_name('art').joinpath('farm-neglected-morning.webp').read_bytes()).digest()
  assert 'DESIGN PREVIEW' in page.locator('.demo-note').text_content();assert page.locator('#code').input_value()=='print("...")'
  page.locator('#activityMenuOpen').click();assert page.locator('#activityPlan button').count()==12;assert page.locator('.activity-section').count()==5;page.locator('[data-close=activitiesDialog]').click()
  page.locator('#explain').click();assert 'print()' in page.locator('#conceptCopy').text_content();page.locator('#tryActivity').click()
