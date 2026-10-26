@@ -205,4 +205,4 @@ The repeated welcome and variable-name activities are combined/removed. XP remai
 
 
 ## Current homepage progress behavior
-The Island 1 map counts the10 active task IDs from mochi.farm.chapter1.v2 and says tasks. Legacy five-activity numeric progress is unchanged. Older 12-task chapter saves filter retired welcome-guided and supply-label IDs while preserving retained progress. A map regression covers partial/full current progress and the legacy counter.
+The Island 1 map counts the10 active task IDs from mochi.farm.chapter1.v2 and says tasks. Legacy five-activity numeric progress is unchanged. Older 12-task chapter saves filter retired welcome-guided and supply-label IDs while preserving retained progress. A map regression covers partial/full current progress and the legacy counter. Pages run40389206428 deployed commit6cb2e1a successfully; live index and progress code match that commit.

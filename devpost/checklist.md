@@ -293,4 +293,8 @@ The repeated welcome and variable-name activities are combined/removed. XP remai
 - [x] Old five-activity progress counter remains unchanged.
 - [x] Retired IDs are filtered while retained 12-task save progress maps to the10-task plan.
 - [x] Map regression passes partial/full shorter-plan progress and legacy counters.
-- [ ] Publish this correction; manual Pages workflow remains required.
+- [x] Published commit6cb2e1a; Pages run40389206428 succeeded, and live index/progress files match the commit.
+
+
+## Demo-prep homepage correction deployed - 2026-10-26
+The Island 1 homepage now reports progress against10 active Chapter1 tasks. Retired welcome-guided and supply-label IDs are ignored in older saves; retained First Hello means the combined welcome is complete. Commit6cb2e1a was manually deployed in Pages run40389206428 (Success). Live index.html and world-map-home.js return HTTP200 and match the deployed commit. Public map regression for partial/full10-task progress and old numeric progress passes.

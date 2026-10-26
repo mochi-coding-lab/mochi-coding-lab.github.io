@@ -31,3 +31,6 @@ Review: https://mochi-coding-lab.github.io/first-lesson.html?tour=1&v=9837735 . 
 
 ## 10-task Chapter 1 release - 2026-10-26
 Owner requested deployment. Commit a3d3376 was pushed to mochi-coding-lab/mochi-coding-lab.github.io main and manually deployed; Pages run40387188271 reports Success. Live HTML, manifest and runtime files checked against the public build. Four public-map/island/nature/water checks passed. The full Python/Chromium lesson regression could not run because the Python launcher was inaccessible; owner browser/device review remains pending. Pages remains manual-only. Review URL: https://mochi-coding-lab.github.io/first-lesson.html?v=a3d3376 .
+
+## Demo-prep task-count correction - 2026-10-26
+Updated the Island 1 map from12 activities to10 active tasks and filtered retired IDs from old Chapter1 saves. Manual Pages run40389206428 deployed commit6cb2e1a successfully. Live index.html and world-map-home.js return HTTP200 and match the deployed commit; public progress check passes for partial/full10-task saves and old numeric lesson progress.
