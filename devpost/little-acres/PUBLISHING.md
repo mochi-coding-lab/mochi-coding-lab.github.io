@@ -21,3 +21,5 @@ Homepage consolidation: index.html now adapts to phone and desktop. phone.html i
 Before publishing this chapter run check-first-morning.py and check-first-morning-edge.py, plus existing map regression checks. Include all python/ files in the explicit public build. Initial Python runtime download is about14MB. New progress uses mochi.farm.chapter1.v2; old saves remain intact. Real-account end-to-end and native device checks remain separate.
 
 Current chapter deployment: https://github.com/mochi-coding-lab/mochi-coding-lab.github.io/actions/runs/40283388308 (Success). Direct Pages cloud check blocked; manual-only future publishing restored.
+
+Latest deployment: activity5/6 visual correction a8e2d28, release97518a7, Pages run40286599016 Success. Future publishing remains manual-only.
