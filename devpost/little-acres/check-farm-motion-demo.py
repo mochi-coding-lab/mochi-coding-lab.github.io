@@ -1,0 +1,22 @@
+"""Exercise the standalone HTML offline; no server, network or Python runtime."""
+from pathlib import Path
+import json
+from playwright.sync_api import sync_playwright
+file=Path(__file__).with_name('farm-motion-demo.html').resolve();url=file.as_uri()
+with sync_playwright() as p:
+ browser=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
+ page=browser.new_page(viewport={'width':390,'height':844});errors=[];remote=[];page.on('pageerror',lambda e:errors.append(str(e)));page.on('request',lambda r:remote.append(r.url) if r.url.startswith(('http:','https:')) else None)
+ page.set_content(file.read_text());page.wait_for_function("document.getElementById('actor').dataset.state==='idle'");assert 'Welcome!' in page.locator('#speech').inner_text();assert not page.locator('#run').is_disabled();assert page.locator('#continue').is_disabled()
+ page.screenshot(path='/tmp/mochi-fluid-intro-phone.png')
+ # Invalid or executable JavaScript never reaches the sequence.
+ page.locator('#code').fill('alert("not Python")');page.locator('#run').click();assert page.locator('#feedback').get_attribute('class').endswith('error');assert page.locator('#signText').text_content()==''
+ start_x=page.locator('#actor').bounding_box()['x'];page.locator('#code').fill('farm_name = "Willow Farm"');page.locator('#run').click();page.wait_for_function("document.getElementById('actor').dataset.state==='walking'");page.wait_for_timeout(250);mid_x=page.locator('#actor').bounding_box()['x'];assert mid_x>start_x+1;assert page.locator('#continue').is_disabled();page.wait_for_function("document.getElementById('actor').dataset.state==='acting'");assert page.locator('#actor').bounding_box()['x']>mid_x+1;assert page.locator('#signText').text_content()==''
+ page.wait_for_function("document.getElementById('actor').dataset.state==='complete'");assert page.locator('#actor').bounding_box()['x']+page.locator('#actor').bounding_box()['width']<=page.locator('#signText').bounding_box()['x'];assert page.locator('#signText').text_content()=='Willow Farm';assert page.locator('#xpMeter').text_content()=='✦ 50 XP';assert page.locator('#run').is_disabled();assert not page.locator('#continue').is_disabled();page.screenshot(path='/tmp/mochi-fluid-complete-phone.png')
+ page.locator('#continue').click();assert page.locator('#chapterComplete').is_visible();assert 'Willow Farm' in page.locator('#completeCopy').text_content();page.locator('#closeComplete').click()
+ # Reset during a walk cannot apply the canceled run or award XP.
+ page.locator('#reset').click();page.wait_for_function("document.getElementById('actor').dataset.state==='idle'");page.locator('#run').click();page.wait_for_function("document.getElementById('actor').dataset.state==='walking'");page.locator('#reset').click();page.wait_for_function("document.getElementById('actor').dataset.state==='idle'");page.wait_for_timeout(1700);assert page.locator('#signText').text_content()=='';assert page.locator('#xpMeter').text_content()=='✦ 0 XP'
+ page.emulate_media(reduced_motion='reduce');page.locator('#code').fill('farm_name = "<img src=x onerror=alert(1)>"');page.locator('#run').click();page.wait_for_function("document.getElementById('actor').dataset.state==='complete'");assert page.locator('#signText img').count()==0;assert '<img' in page.locator('#signText').text_content()
+ for width,height,name in [(320,740,'small-phone'),(390,844,'phone'),(820,1180,'tablet'),(1440,1000,'desktop'),(844,390,'landscape')]:
+  page.set_viewport_size({'width':width,'height':height});page.wait_for_function('parseFloat(document.documentElement.style.getPropertyValue("--viewport-height"))===innerHeight');page.evaluate('()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))');sizes=page.evaluate('''()=>({scene:document.getElementById('scene').clientHeight,total:document.querySelector('.game').clientHeight,panel:document.querySelector('.editor-panel').clientHeight,overflow:document.documentElement.scrollWidth>innerWidth})''');assert abs(sizes['scene']/sizes['total']-.7)<.005,(name,sizes);assert not sizes['overflow'];page.screenshot(path=f'/tmp/mochi-fluid-{name}.png')
+ assert not errors,errors;assert not remote,remote
+ browser.close();print('PASS: offline single-file, 70/30 layout, smooth state order, name reveal after action,50XP/Continue, invalid input, literal text safety, reset cancels run, reduced motion, phone/tablet/desktop/landscape')
