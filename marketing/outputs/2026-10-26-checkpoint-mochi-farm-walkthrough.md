@@ -35,3 +35,6 @@ Goal: viewers can identify the sign, supplies and garden as places where later c
 
 ## Publication and next step
 Review art, movement, framing and captions with the owner first. Keep paced navigation/Skip and reduced motion. Edit/caption/narrate the final video and confirm privacy/legibility before any separately approved external posting. Current local review recording contains no people or account details. No metrics, testimonials, learning outcomes or finished social video claimed. Website publication remains separately gated.
+
+## Website release update — 2026-10-26
+Owner explicitly requested publication after approving open-eye Mochi. Guided walkthrough and open-eye character are published: application9837735, Pages run40308963207 Success. Earlier local-only deployment status is superseded. This is not social publication approval or learning evidence. CAPTURE NOW / POST LATER remains.
