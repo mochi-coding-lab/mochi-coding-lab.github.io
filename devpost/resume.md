@@ -881,3 +881,6 @@ Verified check-farm-restart.py: cancel preserves the exact save; confirm/reload 
 
 ## Restart release authorized — 2026-10-26
 Owner explicitly requested deployment of tested applicationd70b6e7, adding confirmed Chapter1 restart. Reset and edge regressions passed in the application change. Manual workflow dispatch remains Forbidden from cloud; established one-time exact-message release fallback used, to restore workflow_dispatch-only afterward. Only reviewed public files included; untracked rejected world prototype remains excluded. Actions verification pending.
+
+## Restart button deployed — 2026-10-26
+GitHub Pages run40375360760 reports Success (27s): https://github.com/mochi-coding-lab/mochi-coding-lab.github.io/actions/runs/40375360760 . Releasef1b1be1 publishes applicationd70b6e7, including bilingual confirmed restart and reset-aware account merge. Public lesson https://mochi-coding-lab.github.io/first-lesson.html?v=f1b1be1 . HTML/CSS/JS copies match tested source. Restored workflow_dispatch-only; future pushes do not publish. Direct live rendering from this proxy-restricted cloud remains unverified; deployment success verified.
