@@ -196,3 +196,7 @@ The owner asked to remove repetitive tasks. The local plan now has10 tasks while
 9. Use the notebook: shared state across two cells and .ipynb export.
 10. Take-home workbench and recap.
 The repeated welcome and variable-name activities are combined/removed. XP remains unchanged at400 task XP plus100 chapter-completion XP; the final reward still requires every current task. Old browser/account saves retain completed stable IDs, drafts and rewards; old numeric task positions are translated to the shorter order. The 10-task build is deployed. The updated full-lesson browser regression and owner device review remain pending.
+
+
+## Homepage task-count correction - 2026-10-26
+The shortened lesson has10 current tasks, so the Island 1 map now counts the10 retained stable IDs and labels them as tasks. Legacy numeric progress for the older five-activity lesson is unchanged. Previously completed 12-task saves filter out retired welcome-guided and supply-label entries; the retained First Hello ID represents the combined welcome. Added map regression coverage for partial and fully completed current plans plus legacy progress. Local checks pass; deployment is pending.

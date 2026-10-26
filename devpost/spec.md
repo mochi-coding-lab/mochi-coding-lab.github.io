@@ -202,3 +202,7 @@ The owner asked to remove repetitive tasks. The local plan now has10 tasks while
 9. Use the notebook: shared state across two cells and .ipynb export.
 10. Take-home workbench and recap.
 The repeated welcome and variable-name activities are combined/removed. XP remains unchanged at400 task XP plus100 chapter-completion XP; the final reward still requires every current task. Old browser/account saves retain completed stable IDs, drafts and rewards; old numeric task positions are translated to the shorter order. The 10-task build is deployed. The updated full-lesson browser regression and owner device review remain pending.
+
+
+## Current homepage progress behavior
+The Island 1 map counts the10 active task IDs from mochi.farm.chapter1.v2 and says tasks. Legacy five-activity numeric progress is unchanged. Older 12-task chapter saves filter retired welcome-guided and supply-label IDs while preserving retained progress. A map regression covers partial/full current progress and the legacy counter.

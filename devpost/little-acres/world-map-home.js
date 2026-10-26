@@ -3,11 +3,11 @@
  const key='mochi.lesson1.progress.v1';
  const pins=document.querySelectorAll('[data-island]');
  let count=0,total=5,chapterState=false,selected=0,revision=0;
- const chapterIDs=['welcome-guided','first-hello','farm-name','supply-label','seed-supplies','measure-bed','prepare-bed','plant-seeds','morning-script','inspect-values','farm-notebook','workbench'];
+ const chapterIDs=['first-hello','farm-name','seed-supplies','measure-bed','prepare-bed','plant-seeds','morning-script','inspect-values','farm-notebook','workbench'];
  function progress(state){return new Set(Array.isArray(state?.completed)?state.completed.filter(n=>Number.isInteger(n)&&n>=0&&n<total):[]).size;}
  function update(){
    const finished=count===total;
-   document.getElementById('journeyProgress').textContent=finished&&!chapterState?'1 island restored · more islands coming soon':`Island 1 · ${count} of ${total} activities complete${finished?' · restored':''}`;
+   document.getElementById('journeyProgress').textContent=finished&&!chapterState?'1 island restored · more islands coming soon':`Island 1 · ${count} of ${total} ${chapterState?'tasks':'activities'} complete${finished?' · restored':''}`;
    document.getElementById('firstIslandRestored').style.opacity=String(count/total);
    pins[0].querySelector('.label small').textContent=finished?'✓ RESTORED':count?'CONTINUE HERE':'START HERE';
    pins[0].setAttribute('aria-label',finished?'Island 1 restored. Revisit Python basics.':'Island 1 available. Inspect Python basics.');
@@ -16,7 +16,7 @@
    if(!document.querySelector('.world').classList.contains('show-vision'))document.getElementById('worldState').textContent=finished?'YOUR JOURNEY · ISLAND 1 RESTORED':'YOUR JOURNEY · BRING THE ISLANDS TO LIFE';
    const number=document.querySelector('.count span');number.textContent='ISLANDS · 1 PLAYABLE';
    if(selected===0){
-     document.getElementById('islandStatus').textContent=finished?'ISLAND 01 · RESTORED':`ISLAND 01 · ${count}/5 COMPLETE`;
+     document.getElementById('islandStatus').textContent=finished?'ISLAND 01 · RESTORED':`ISLAND 01 · ${count}/${total} COMPLETE`;
      const enter=document.getElementById('enterIsland');enter.firstChild.textContent=finished?'Revisit island ':count?'Continue island ':'Let’s begin ';
    }else{
      document.getElementById('islandStatus').textContent=`ISLAND ${String(selected+1).padStart(2,'0')} · COMING SOON`;

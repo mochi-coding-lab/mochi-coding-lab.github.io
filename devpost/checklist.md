@@ -286,3 +286,11 @@ The repeated welcome and variable-name activities are combined/removed. XP remai
 - [x] Live first-lesson.html, manifest, farm-chapter.js, farm-ambience.js and farm-supply-visuals.js return HTTP200 and match the local public build.
 - [x] Four public-map/island/nature/water checks passed.
 - [ ] Full 10-task Python/browser regression and owner physical-device review remain pending.
+
+
+## Homepage count aligned with shorter Chapter 1 - 2026-10-26
+- [x] Map displays progress against10 current task IDs and labels them as tasks.
+- [x] Old five-activity progress counter remains unchanged.
+- [x] Retired IDs are filtered while retained 12-task save progress maps to the10-task plan.
+- [x] Map regression passes partial/full shorter-plan progress and legacy counters.
+- [ ] Publish this correction; manual Pages workflow remains required.
