@@ -94,3 +94,6 @@ Validation: full first-morning regression passed all twelve tasks/notebook/rewar
 
 ## Approved close-storybook release — 2026-10-26
 Owner reviewed the actual screenshot and explicitly requested deployment of application562b54e. All twelve lesson and visual-feedback regressions already passed. Direct manual dispatch remains Forbidden from this environment; using the established one-time exact-message release trigger, then restoring manual-only publishing. Only reviewed public build is deployed; rejected untracked world preview excluded. Actions outcome pending.
+
+## Close-storybook release completed — 2026-10-26
+Pages run40374283049 reports Success (52s): https://github.com/mochi-coding-lab/mochi-coding-lab.github.io/actions/runs/40374283049 . Releasead9f315 publishes approved application562b54e. Public lesson https://mochi-coding-lab.github.io/first-lesson.html?v=ad9f315 ; add tour=1 to replay the opening without resetting saved progress. Release HTML/CSS/JS, farm background and open-eye character bytes match approved source. Restored workflow_dispatch-only; future pushes do not deploy. Direct post-deploy public rendering remains unverified from this proxy-restricted cloud; Actions success verified.
