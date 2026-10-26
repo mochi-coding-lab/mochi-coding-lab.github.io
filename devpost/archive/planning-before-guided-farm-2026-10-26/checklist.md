@@ -1,0 +1,56 @@
+---
+doc: checklist
+status: draft
+updated: 2026-10-26
+---
+
+# Mochi — implementation and delivery checklist
+
+## Chapter1 implementation
+- [x] Approved parchment/forest-green journey visual language in Chapter1.
+- [x] Mission, explanation, supported practice and independent greeting before game APIs.
+- [x] Twelve Topic1 activities and full supporting workbench/setup content.
+- [x] Actual local Python runtime, meaningful validation and interruptible worker.
+- [x] Editable farm name, crop, supplies and dimensions; create/plant/water bed.
+- [x] First Hello, six achievement states,500XP maximum, chapter rank and locked later ranks.
+- [x] Equippable persistent flower pin, optional chime/confetti and reduced motion.
+- [x] Guest persistence, old progress retained, new map restoration count.
+- [x] Existing account bridge retained with new nested state; mocked merge verified.
+- [x] English/Arabic copy and LTR code, responsive phone/tablet/desktop.
+- [x] Self-hosted runtime assets/licenses and explicit public build allowlist.
+
+## Verified automatically
+- [x] Real Chromium all12 activities and chapter completion.
+- [x] Wrong capitalization and invalid/hardcoded learning answers cannot complete activities.
+- [x] Real Python notebook values and id output; .py download/open and .ipynb export.
+- [x] Reload, pin equipment, no duplicate XP, existing record preservation.
+- [x] Worker Stop,7s timeout, restart and progress retention.
+- [x]320/390 phone,820/1180 tablet,1440 desktop; no horizontal overflow, Arabic switch preserves code.
+- [x] Mock account load/merge/save retains legacy fields; homepage reads new progress.
+- [x] Storage-unavailable warning; guest can still enter/play.
+- [x] Existing map assets/island availability/audio/water regression checks.
+
+## Pending human review
+- [ ] Owner reviews Chapter1 visual detail, pacing, new art and rewards.
+- [ ] Actual phone keyboard/touch, assistive technology and device speaker review.
+- [ ] Real signed-in cross-session progress and Google provider configuration/verification.
+- [ ] Beginner comprehension observed independently; automation does not establish learning.
+- [ ] Final art polish for vector sign/chest/plants if owner requests.
+
+## Journey and shipping
+- [ ] Implement next islands only after their curriculum/activity review; currently upcoming.
+- [ ] Learning wrap-up/app map and learner-written hackathon submission.
+- [ ] Demo recording and final submission verification.
+- [x] Explicit owner publication request; Pages run40283388308 Success. Future publication still requires owner request.
+
+Prior checklist/history preserved in archive/planning-before-first-morning-2026-10-26/.
+
+## Release status
+Owner explicitly requested publication on2026-10-26. Current Chapter1 application a8e2d28 deployed via release97518a7; GitHub Pages run40286599016 reports Success. Public build exactly matches tested a8e2d28, including activities5/6 visual feedback fixes. Manual-only publishing restored for future edits. Direct Pages HTTP verification from this cloud remains proxy-blocked; owner device review is next. Real-account/native-device/learning validation remains pending.
+
+## Activities5–6 visible feedback correction — 2026-10-26
+Owner reported missing visual results in activities5/6. Seed supplies previously only changed a tiny number. Added crop illustration/name, readable quantity and individual seed units beside the chest; supply text now remains visible alongside bed stats. Fixed measurement hidden-state toggle: undefined prepared state passed to toggleAttribute could alternate visibility on redraw. Added stable boolean visibility, full plot boundary and length/breadth/area labels, including1×1 (no interior lines) and replay after soil preparation. Success dialogue now describes chosen crop/count or dimensions/area. Planning outline is still not prepared soil; activity7 performs preparation. Browser regression covers crop/count changes, measured4×3,1×1, reload and prepared-bed replay. No learning checks, XP or progression changes. Committed/pushed only; not yet deployed.
+
+## Activities5–6 fix published — 2026-10-26
+Owner explicitly requested deployment of activities5 and6 corrections. Pages run40286599016 reports Success for release97518a7, application a8e2d28. Crop/seed display and persistent dimensioned measurement outline are now published. Restored workflow_dispatch-only after one-time exact-message-gated release. Earlier unpublished-fix note superseded; future edits still need explicit publication approval. Direct Pages cloud access remains restricted; owner device review is next.
+Deployment: https://github.com/mochi-coding-lab/mochi-coding-lab.github.io/actions/runs/40286599016 . Review: https://mochi-coding-lab.github.io/first-lesson.html?v=a8e2d28 .

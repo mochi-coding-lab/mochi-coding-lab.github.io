@@ -141,3 +141,6 @@ Owner approved parchment journey style and Chapter1 build. Actual local Python-b
 
 ### 2026-10-26 — Chapter1 website release
 Owner explicitly approved website publication; Pages run40283388308 Success for application f12ad5a. ENG-007 remains a local social draft: no social recording, posting, learner study or engagement results. Cloud direct Pages access blocked; owner physical-device review pending.
+
+### 2026-10-26 — ENG-008 guided abandoned farm
+Owner rejected the first close-view character/framing and requested the original plush storybook direction with sad arrival, dream, moving walkthrough and existing12 activities. Local working walkthrough/assets and browser review recording exist; not deployed or socially published. Complete draft: outputs/2026-10-26-checkpoint-mochi-farm-walkthrough.md. CAPTURE NOW / POST LATER; mission clarity and learner benefit remain untested. No external actions or engagement findings.

@@ -8,7 +8,7 @@ server=http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,d
 programs=['print("Hello farm!")','print("Welcome to our sunny home!")','farm_name="Cedar Garden"\nprint("Welcome to",farm_name)','my_seeds=12\nprint(my_seeds)','crop="sunflower"\nseed_count=12\nprint(crop,seed_count)','length=4\nbreadth=3\narea=length*breadth\nprint(area)','farm.prepare_bed(length,breadth)','seed_count=6\nfarm.plant(crop,seed_count)','# Our morning\nprint("Good morning!")\nfarm.water()','print(crop)\nprint(id(crop))']
 with sync_playwright() as p:
  browser=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
- page=browser.new_page(viewport={'width':1440,'height':1000},reduced_motion='reduce');errors=[];page.on('pageerror',lambda e:errors.append(str(e)));page.goto(base+'/first-lesson.html');page.screenshot(path='/tmp/mochi-first-morning-mission.png');page.get_by_role('button',name='Enter the farm →',exact=True).click()
+ page=browser.new_page(viewport={'width':1440,'height':1000},reduced_motion='reduce');errors=[];page.on('pageerror',lambda e:errors.append(str(e)));page.goto(base+'/first-lesson.html');page.screenshot(path='/tmp/mochi-first-morning-mission.png');page.get_by_role('button',name='See Mochi’s dream →',exact=True).click();page.get_by_role('button',name='Enter the farm →',exact=True).click();page.get_by_role('button',name='Skip tour · see our plan',exact=True).click();page.get_by_role('button',name='Start our first activity →',exact=True).click()
  for i,code in enumerate(programs):
   page.get_by_role('button',name='Show me how →',exact=True).click();page.get_by_role('button',name='Let me try →',exact=True).click()
   if i==0:

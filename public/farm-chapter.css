@@ -12,4 +12,34 @@
 
 .scene-progress{display:flex;gap:7px;align-items:center}.scene-progress #focusFarm{font-size:20px;padding:5px 9px;min-height:34px}.chapter-layout.focus-farm{display:grid;grid-template-columns:1fr;grid-template-rows:1fr}.chapter-layout.focus-farm .lesson-workspace{display:none}.chapter-layout.focus-farm .farm-scene{height:100%;min-height:0}
 
-#mochiActor{transform-box:fill-box;transform-origin:center bottom}
+#mochiActor{transform-box:view-box;transform-origin:690px 682px}
+
+/* Companion performance stays independent of Python and permanent world state. */
+#mochiBody{transform-box:view-box;transform-origin:690px 682px;animation:mochi-breathe 3.8s ease-in-out infinite}
+#mochiTool{transform-box:view-box;transform-origin:810px 720px}
+#mochiActor.thinking #mochiBody{animation:mochi-think 1.3s ease-in-out infinite}
+#activityEffects{pointer-events:none}.activity-particle{animation:farm-particle .65s ease-in infinite}
+@keyframes mochi-breathe{50%{transform:scale(1.018,.983)}}
+@keyframes mochi-think{50%{transform:rotate(-3deg) translateY(-2px)}}
+@keyframes farm-particle{from{translate:0 -30px;opacity:0}35%{opacity:1}to{translate:0 35px;opacity:0}}
+@media(prefers-reduced-motion:reduce){#mochiBody,.activity-particle{animation:none!important}}
+
+/* A guided story opening uses the same parchment and forest palette as the concept. */
+.is-walkthrough .scene-progress,.is-walkthrough .workspace-top,.is-walkthrough .chapter-meter,.is-walkthrough .save-note{display:none}
+.is-walkthrough .lesson-workspace{display:flex;flex-direction:column;justify-content:center}
+.is-walkthrough .lesson-workspace>.quiet-button{margin-top:8px}
+.thought-bubble{position:absolute;left:20%;top:12%;width:clamp(140px,25%,270px);aspect-ratio:1.5;background:#fff8e8;border:4px solid #edddb3;border-radius:48%;padding:9px;box-shadow:0 8px 26px #372d3c44;animation:dream-float 4s ease-in-out infinite;z-index:2}
+.thought-bubble img{width:100%;height:100%;object-fit:cover;border-radius:48%;display:block}.thought-bubble span{position:absolute;bottom:10px;left:8%;right:8%;text-align:center;background:#fff5d9dd;border-radius:20px;font:italic 12px Georgia;color:#4e5e38;padding:3px}
+.thought-bubble::before,.thought-bubble::after{content:'';position:absolute;background:#fff8e8;border:2px solid #edddb3;border-radius:50%;width:18px;height:15px;bottom:-20px;left:35%}.thought-bubble::after{width:10px;height:9px;bottom:-34px;left:30%}
+.tour-missions details{padding:9px 12px;border:1px solid #bca26b55;border-radius:12px;background:#fff7df55}.tour-missions summary{font-weight:bold}.tour-missions ol{margin:8px 0;padding-inline-start:20px;font-size:12px;line-height:1.8}.tour-missions+button{margin-top:18px}
+#doorPanel{transform-box:fill-box;transform-origin:left center;transition:transform 1s ease,opacity 1s}#doorPanel.open{transform:scaleX(.23) skewY(-8deg);opacity:.85}
+.drifting-leaf{animation:leaf-drift 12s linear infinite;opacity:.7}.swaying-grass{animation:grass-sway 3.6s ease-in-out infinite}.farm-butterfly{animation:butterfly-flight 18s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes leaf-drift{0%{transform:translate(var(--x),var(--y)) rotate(0);opacity:0}10%,80%{opacity:.7}100%{transform:translate(calc(var(--x) + 110px),calc(var(--y) + 590px)) rotate(290deg);opacity:0}}
+@keyframes grass-sway{50%{transform:rotate(7deg)}}@keyframes butterfly-flight{0%,100%{transform:translate(530px,510px) scale(.55)}35%{transform:translate(1090px,620px) scale(.8)}70%{transform:translate(880px,420px) scale(.6)}}
+@keyframes dream-float{50%{translate:0 -5px}}
+#run{background:linear-gradient(#f7dda0,#dfb456);color:#493819;border-color:#b18a3e;box-shadow:inset 0 1px #fff2be,0 4px 10px #785d1720}
+.lesson-workspace{background-color:#f4e9ce;background-image:radial-gradient(ellipse at 20% 0,#fff7e750,transparent 70%),repeating-linear-gradient(0deg,#9b7a3905 0px,#9b7a3905 1px,transparent 1px,transparent 3px)}
+@media(max-width:759px){.thought-bubble{left:23%;top:12%;width:155px}.thought-bubble span{font-size:9px}.is-walkthrough .lesson-workspace{display:block}.is-walkthrough .lesson-workspace h1{font-size:25px}.is-walkthrough .story-copy{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.thought-bubble,.drifting-leaf,.swaying-grass,.farm-butterfly{animation:none!important}.drifting-leaf{transform:translate(var(--x),var(--y))}.farm-butterfly{transform:translate(530px,510px) scale(.55)}}
+
+.chapter-layout:not(.has-first-reward) #collectionButton{display:none}

@@ -22,3 +22,4 @@ Initialization created no content packages, public posts or experiment results. 
 - [2026-10-18: Program Mochi’s journey](2026-10-18-checkpoint-program-mochi.md) — ENG-002 / CONTENT-009; complete local honest-builder lesson package. Actual recordings, video edit and publication pending.
 - [2026-10-19: Modern Chapter 1 redesign](2026-10-19-checkpoint-modern-redesign.md) — ENG-005 / CONTENT-012; real before/after screenshots and carousel/Reel script. Owner review, recording and publication pending.
 - [2026-10-26: First Hello reward](2026-10-26-checkpoint-first-hello-reward.md) — ENG-007 / CONTENT-014; actual local implementation with complete narration/subtitles/capture plan, not recorded or posted.
+- [2026-10-26: Mochi’s guided farm walkthrough](2026-10-26-checkpoint-mochi-farm-walkthrough.md) — ENG-008 / CONTENT-015; actual local tour review recording plus complete draft; final coding capture, edit and external publication pending.

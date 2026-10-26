@@ -75,3 +75,6 @@ Owner approved/publicly deployed living-map homepage with first playable five-ac
 
 ### CONTENT-014 / ENG-007 — 2026-10-26
 Working FirstHello reward reveal: [complete24-second Reel/Story package](outputs/2026-10-26-checkpoint-first-hello-reward.md). Actual local prototype; screenshot evidence, not recorded video. CAPTURE NOW / POST LATER; owner/device review, capture/editing and publication approval pending. No learning or engagement results.
+
+### CONTENT-015 / ENG-008 — 2026-10-26
+[Character-led abandoned farm walkthrough](outputs/2026-10-26-checkpoint-mochi-farm-walkthrough.md): actual local animated tour review recording, complete24-second narration/subtitles/capture plan; code segment, final edit/narration and publication pending. CAPTURE NOW / POST LATER. No learning/engagement results.
