@@ -1,4 +1,44 @@
-# Current checkpoint — 2026-10-24
+## Activities 4–5 visuals and activity navigation — 2026-10-26
+
+Owner explicitly approved clearer visuals for activities 4 and 5 plus Previous activity navigation on 2026-10-26. Implemented persistent Previous/Next activity controls with first/last/incomplete/busy guards; revisiting saves the current draft and opens completed work for review, preserving world state and rewards. Added farm-supply-visuals.js: larger labelled seed container for activity 4 using the actual chosen identifier and quantity, crop seed packet/count for activity 5, one seed mark per displayed seed, and readable workspace result cards. Completed activity 4 uses its own saved label/count even when revisited after later crop choices. Python validation, curriculum and reward calculation remain unchanged. Restyling is scoped to these approved visuals/navigation; no integration of isolated design previews.
+
+check-supplies-navigation.cjs passes chosen variable/crop/counts (1/12/24), per-seed visuals, empty state, literal-text safety, navigation bounds, busy/incomplete guards and preservation of drafts/world/rewards. Public build, check-pwa.cjs, check-public-map.cjs and check-farm-ambience.cjs pass. These are static/VM checks; actual browser rendering, phone layout, audio listening and full Python interaction remain pending owner review. Browser UI control was blocked by the computer-use URL policy; do not claim a rendered review. All new changes remain local; owner expressly held publication. No deployment or submission was performed.
+
+
+## Gentle farm ambience — 2026-10-26
+
+Owner requested and authorized gentle farm background sounds for Lesson 1 on 2026-10-26. Implemented farm-ambience.js: quiet synthesized filtered breeze and occasional short bird calls; first pointer/keyboard interaction unlocks sound; existing persistent mute controls ambience and reward effects; hidden tab/page leave stops ambience scheduling and suspends its context. No external audio files, microphone or added data collection. Existing learning/reward code is unchanged except mute synchronization and accessible labels. New file included in public allowlist, lesson script cache version advanced.
+
+check-farm-ambience.cjs passes interaction gate, breeze/bird creation, no duplicate loops, shared mute, hidden-tab resume, page leave and unsupported-audio fallback. check-pwa.cjs and check-public-map.cjs pass after the authorized audio addition. These are mocked/static/HTTP checks; physical speaker/device/browser listening remains pending. Full Python browser regressions were not rerun in this environment. Public deployment has not been authorized/performed for PWA or farm ambience. Current public version remains the prior release. Owner needs an explicitly authorized manual publication to review these changes remotely.
+
+
+## PWA local implementation checkpoint — 2026-10-26
+
+PWA implementation is ready locally for the owner hands-on check. Added manifest.webmanifest (stable relative identity/scope, index start URL, standalone display), 192/512px PNG app icons and 180px Apple touch icon derived from existing Mochi artwork, manifest/theme/touch integration on index/chapters/first-lesson/phone, and explicit public build inclusion. No service worker/offline cache added. Learner XP, badges and coding feedback are retained; owner clarified rewards are for app learners, not the guided build.
+
+Verification on this turn: check-pwa.cjs passes manifest scope, PNG dimensions, page/build links, unchanged lesson/rewards/Python code, prototype exclusion and manual-only publication. Existing check-public-map.cjs, check-map-islands.cjs, check-map-nature.cjs and check-map-water-fallback.cjs pass. Local HTTP requests for map/chapter/lesson/manifest/icons return 200 with manifest MIME. Full Python browser regressions were not rerun: this Windows environment has no usable Python executable and CUA reports no connected browsers. Prior recorded Python tests are historical evidence, not new runs. Installation/standalone launch, saved progress and actual Python use remain owner checks. Local review server http://127.0.0.1:8087 (session 95287). No deployment or submission performed. Learn-mode slice remains unchecked/uncommitted until owner tries it and reports back.
+
+
+## Learn mode chosen — 2026-10-26
+
+Owner selected learn mode with more explanation and hands-on steps. The earlier unanswered mode note below is superseded. Owner also mentioned rewards and feedback; target is ambiguous, so clarify whether this concerns the guided build or the existing Mochi learner reward/feedback system. Do not infer new product features. Next implementation remains the approved PWA slice; no code/publication/submission changed on this preference turn.
+
+## Build order approved — 2026-10-26
+
+Owner approved the remaining PWA build, verification, final hands-on review and learning-wrap-up order. Checklist is now approved with one remaining end-to-end installability slice and required closing checkpoints. No build mode was found in checklist/profile; ask learn or fast before implementation. Prior checklist archived under archive/planning-before-pwa-2026-10-26/. No app code, publication or submission changed in this step.
+
+## Technical plan approval — 2026-10-26
+
+Technical plan approved by owner on 2026-10-26, including browser-based real Python, guest progress saved on the device, GitHub Pages hosting, and the confirmed PWA addition (installation, app icon and standalone window). Skills 1–4 are complete. Installability remains unimplemented/unverified; skill 5 must implement and verify it, complete the final review and record the learning wrap-up/app map. No new publication or Devpost submission is authorized by this approval.
+
+
+# Planning approval checkpoint — 2026-10-26
+
+Subsequent product review: owner confirmed the described experience (explanations/examples, learner-written code, 12 activities, saved progress, one-time rewards and error feedback). PRD is now approved; technical spec remains draft and is next. This supersedes the PRD-draft status in the paragraph below, without changing pending visual acceptance or validation.
+
+Owner requested finishing the first four skills before submission and approved the reviewed scope: Mochi teaches beginners Python through visual farm activities, Chapter 1 only for the hackathon proof of concept. Learner profile is complete; scope is now approved. PRD and spec remain draft, to review in order. No approval of pending visual designs, preview integration, new implementation, publication, tests or submission is implied. The 2026-10-24 checkpoint below is historical; use the latest 2026-10-26 build/release entries and canonical plans for the current application.
+
+# Historical checkpoint — 2026-10-24
 
 Read scope.md, prd.md, spec.md and checklist.md as the current plan. Current app: natural farm, existing five-activity Lesson 1, visible square grid only; no movement activity. Lesson/grid design editing paused; desktop map sharpness fix authorized on 2026-10-24. Same branch commit/push, manual publication only. Practical work is Phase 5 Build; Phase 6 Ship remains outstanding. Formal planning sign-off is not inferred from file presence. The history below includes rejected/superseded experiments and is not a list of current requirements.
 
@@ -854,3 +894,8 @@ Owner requested that trees behind the house have no leaves and screenshots be up
 Owner approved the neglected/bare-tree farm but rejected the dark outer panel beneath it, requesting the original cream-parchment/forest-green/gold reference while retaining open-eyed Mochi. Restyled the isolated all12 preview accordingly: warm cream textured paper, rounded top corners, subtle botanical branches, stronger green serif headings, muted green body text, soft gold primary/Next buttons and cream secondary controls. The code/notebook editor boxes remain dark forest green with warm text, and simulated output sits on light parchment. Existing70:30 layout retained; no movement/task/reward changes. All embedded WebP character/background assets byte-identical before/after styling.
 
 All12 preview checks pass, including rewards/exports/offline/custom choices and320/390/820/1440 layouts. Refreshed actual screenshot overview /tmp/mochi-parchment-all12-overview.jpg and reference-style Willow Farm captures /tmp/mochi-parchment-{phone,desktop}.png. Supersedes the earlier dark outer-editor theme for this preview only. Current published game and deployment workflow unchanged; commit/push only, no publication requested. Owner visual acceptance remains pending.
+
+
+## Installable web app decision — 2026-10-26
+
+Owner confirmed on 2026-10-26 that Mochi should remain accessible as a website and also be an installable web app (PWA): install on a supported phone/computer, launch from its app icon and use its own window. This does not authorize an app-store release or promise offline Python operation. Existing approval of the Chapter 1 scope and learning experience is retained; this addition is confirmed but implementation and verification remain pending. Technical spec remains draft.
