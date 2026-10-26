@@ -43,3 +43,6 @@ Owner owns reward condition/copy. If viewers mistake XP for arbitrary button pre
 
 ## Recommendation
 CAPTURE NOW / POST LATER. The first working reward is a useful demo moment; scripts/shot list ready, but actual recording/editing, owner acceptance, device review and social publication approval remain pending. Check narration/subtitle translation and legibility, exclude private account info and PDF pages. This is a local marketing package, not a finished video or published post.
+
+## Website release update — 2026-10-26
+Owner subsequently approved website deployment; GitHub Pages run40283388308 reports Success for f12ad5a. This does not authorize social posting, supply recorded footage or establish learning results. Capture/editing/owner-device review remain pending; CAPTURE NOW / POST LATER unchanged.

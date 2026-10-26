@@ -138,3 +138,6 @@ Owner approved/publicly deployed living-map homepage with first playable five-ac
 
 ### 2026-10-26 — ENG-007 working First Hello reward
 Owner approved parchment journey style and Chapter1 build. Actual local Python-backed welcome→independent message→badge→flower equip flow passes browser tests. Other islands locked; real-account/native-device/learning validation pending; new chapter not published. [Capture package](outputs/2026-10-26-checkpoint-first-hello-reward.md): CAPTURE NOW / POST LATER. No social recording, outreach, publication or learner findings.
+
+### 2026-10-26 — Chapter1 website release
+Owner explicitly approved website publication; Pages run40283388308 Success for application f12ad5a. ENG-007 remains a local social draft: no social recording, posting, learner study or engagement results. Cloud direct Pages access blocked; owner physical-device review pending.

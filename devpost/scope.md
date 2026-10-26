@@ -27,4 +27,4 @@ Owner reviews art/layout/pacing; native keyboard/touch and real-account checks; 
 See prd.md, spec.md, checklist.md and resume.md. Earlier plans are preserved in archive/planning-before-first-morning-2026-10-26/.
 
 ## Release status
-Implemented for local review; not published. Last confirmed live application remains full-resolution map release33d42e8 / f82bf5a, Pages run40224663297. The owner said to start Chapter1 and retain the parchment reward UI, not deploy it. Keep workflow_dispatch-only; commit/push does not publish.
+Owner explicitly requested publication on2026-10-26. Chapter1 application f12ad5a deployed via release4b8f73f; GitHub Pages run40283388308 reports Success. Public build exactly matches tested f12ad5a. Manual-only publishing restored for future edits. Direct Pages HTTP verification from this cloud remains proxy-blocked; owner device review is next. Real-account/native-device/learning validation remains pending.
