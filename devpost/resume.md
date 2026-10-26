@@ -1,3 +1,13 @@
+## Remove repeated task story — 2026-10-26
+
+Owner said the twelve tasks feel repetitive and asked to merge lessons or shorten them. The combined lesson screen rendered the same activity story in Mochi speech bubble and again beside the editor. Removed the duplicate: Mochi carries the story, followed once by the goal, explanation, example and editor. This shortens the presentation without changing task sequence, Python requirements, stable IDs, progress or rewards. The change is local and awaits owner review.
+
+
+## Chapter 1 completion celebration — 2026-10-26
+
+Owner requested that completing the twelfth Chapter 1 task trigger a large celebration and an Island 1 / Farm Newcomer window, followed by guidance to the existing rewards view. Locally implemented a new completion dialog with animated medal/starburst, rank name and 500 XP, plus a “See my rewards” transition that opens the existing rewards collection and animates/highlights the earned Farm Newcomer card and collection button. First Hello/flower-pin reward flow remains intact; the rank is awarded only when all twelve tasks are completed. Reduced-motion CSS keeps the reward clear without animation. This is local only; hands-on review and publication are pending.
+
+
 ## Sticky task progress and unified lessons deployed — 2026-10-26
 
 Owner authorized deployment of combined activity/practice, sticky task counter and progress bar, and Tasks labels. Commit 8529bf6 was deployed with manual Pages workflow run 40381931562 (Success): https://github.com/mochi-coding-lab/mochi-coding-lab.github.io/actions/runs/40381931562 . Live first-lesson.html and JavaScript return HTTP 200 and match the approved build. Review URL: https://mochi-coding-lab.github.io/first-lesson.html?v=8529bf6 . Manual-only deploy workflow remains in place. Hands-on scrolling, activity progression, and mobile review remain learner checks.
@@ -953,3 +963,7 @@ GitHub Pages run40375360760 reports Success (27s): https://github.com/mochi-codi
 ## Installable web app decision — 2026-10-26
 
 Owner confirmed on 2026-10-26 that Mochi should remain accessible as a website and also be an installable web app (PWA): install on a supported phone/computer, launch from its app icon and use its own window. This does not authorize an app-store release or promise offline Python operation. Existing approval of the Chapter 1 scope and learning experience is retained; this addition is confirmed but implementation and verification remain pending. Technical spec remains draft.
+
+
+## Chapter 1 shortened to 10 tasks ? 2026-10-26
+Owner asked to keep only non-repetitive tasks. Combined the guided print and learner-authored greeting into one task, then folded valid identifier guidance into crop/seed selection and removed the extra label drill. The resulting sequence has 10 tasks; farm naming, area/multiplication, game tools, planting, scripts, object identity, notebook cells and recap stay distinct. XP remains 400 task XP plus 100 final chapter XP. Added taskPlan2 save migration for old task positions and removed drill completion; retained IDs, XP and user drafts migrate where meaningful, including account saves. Source/public preview synchronized. JavaScript syntax and the 10 source task IDs were checked; the updated browser regression and owner review have not been run. Local only; not pushed or published. The marketing engagement checkpoint was reviewed; this internal simplification is not a learner-tested public story, so no content package was created.

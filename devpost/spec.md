@@ -26,10 +26,13 @@ Focus-on-farm shows the full contained illustration; Escape returns to controls.
 Lesson layout refinement: once the opening walkthrough is complete, each activity renders its story, goal, explanation, example and practice editor together in the existing responsive lesson workspace. No navigation is required between the teaching view and editor. The existing post-success checkpoint remains; draft, progress, reward, sound and farm state continue through existing handlers.
 
 ## Checks
-- python devpost/little-acres/check-first-morning.py (Python Playwright + Chromium): all12 activities, error case, file .py export/open, .ipynb export, no duplicate XP, reload/pin,320/390/820/1180/1440 widths, Arabic direction, Stop.
+- python devpost/little-acres/check-first-morning.py (Python Playwright + Chromium): legacy 12-activity regression suite; rerun/update for the current 10-task plan, file .py export/open, .ipynb export, no duplicate XP, reload/pin,320/390/820/1180/1440 widths, Arabic direction, Stop.
 - python devpost/little-acres/check-first-morning-edge.py: hardcoded-answer rejection, timeout/restart, mocked account merge, new homepage progress, storage warning.
 - node devpost/little-acres/check-public-map.cjs; check-map-islands.cjs; check-map-nature.cjs; check-map-water-fallback.cjs.
 - Historical check-chapter-flow/check-chapter-language target old bounded prototypes; not proof of the new chapter.
+
+## Current task-plan compatibility
+The chapter content source contains10 activities. Progress key remains mochi.farm.chapter1.v2; taskPlan2 marks the shorter ordering. Existing stable IDs remain for retained tasks. Old welcome completion counts toward the combined welcome only when the old independent First Hello was completed; old supply-label completion is retired. Drafts and numeric position migrate on load, including account saves. Current 10-task full regression has not yet been run.
 
 ## Publication
 Repository mochi-coding-lab/mochi-coding-lab.github.io; existing branch pushes main. Pages deploys public/ only, workflow_dispatch-only. No publish authorized in this implementation step. Serve public/ locally for review. Original pre-redesign first-lesson preserved in archive/lesson-before-first-morning/; prior planning archived separately. Legacy helper files remain to avoid breaking older prototypes; new chapter does not load chapter-engine.js.
@@ -175,3 +178,27 @@ Owner requested persistent task numbering and progress during scrolling, renamin
 ## Sticky task progress and unified lessons deployed — 2026-10-26
 
 Owner authorized deployment of combined activity/practice, sticky task counter and progress bar, and Tasks labels. Commit 8529bf6 was deployed with manual Pages workflow run 40381931562 (Success): https://github.com/mochi-coding-lab/mochi-coding-lab.github.io/actions/runs/40381931562 . Live first-lesson.html and JavaScript return HTTP 200 and match the approved build. Review URL: https://mochi-coding-lab.github.io/first-lesson.html?v=8529bf6 . Manual-only deploy workflow remains in place. Hands-on scrolling, activity progression, and mobile review remain learner checks.
+
+
+## Chapter 1 completion celebration — 2026-10-26
+
+Owner requested that completing the twelfth Chapter 1 task trigger a large celebration and an Island 1 / Farm Newcomer window, followed by guidance to the existing rewards view. Locally implemented a new completion dialog with animated medal/starburst, rank name and 500 XP, plus a “See my rewards” transition that opens the existing rewards collection and animates/highlights the earned Farm Newcomer card and collection button. First Hello/flower-pin reward flow remains intact; the rank is awarded only when all twelve tasks are completed. Reduced-motion CSS keeps the reward clear without animation. This is local only; hands-on review and publication are pending.
+
+
+## Remove repeated task story — 2026-10-26
+
+Owner said the twelve tasks feel repetitive and asked to merge lessons or shorten them. The combined lesson screen rendered the same activity story in Mochi speech bubble and again beside the editor. Removed the duplicate: Mochi carries the story, followed once by the goal, explanation, example and editor. This shortens the presentation without changing task sequence, Python requirements, stable IDs, progress or rewards. The change is local and awaits owner review.
+
+## Current shorter Chapter 1 task sequence — 2026-10-26
+The owner asked to remove repetitive tasks. The local plan now has10 tasks while retaining distinct Python ideas:
+1. Welcome visitors: keep a guided print example, then write a different greeting (print, strings, parentheses, case).
+2. Name the farm: assign and use farm_name.
+3. Choose crop and seed count: strings, numbers, assignment and valid variable naming; the separate label drill is removed.
+4. Measure the bed: expressions and multiplication.
+5. Prepare the bed: game API arguments.
+6. Plant seeds: reuse values and respect plot limits.
+7. Save the morning: comments, statement order, .py scripts and watering.
+8. Inspect values: Python objects and id().
+9. Use the notebook: shared state across two cells and .ipynb export.
+10. Take-home workbench and recap.
+The repeated welcome and variable-name activities are combined/removed. XP remains unchanged at400 task XP plus100 chapter-completion XP; the final reward still requires every current task. Old browser/account saves retain completed stable IDs, drafts and rewards; old numeric task positions are translated to the shorter order. This is a local implementation. New curriculum regression and owner review are pending; this is not published.

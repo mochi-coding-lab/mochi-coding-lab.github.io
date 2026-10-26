@@ -6,32 +6,30 @@ updated: 2026-10-26
 
 # Mochi — current product requirements
 
-Scope boundary approved on 2026-10-26: beginner Python through visual farm activities, Chapter 1 only. Product experience approved on 2026-10-26: explanations/examples, learner-written Python, 12 activities, saved progress, one-time rewards and error feedback. Pending visual acceptance, technical-spec approval and test/submission verification remain separate.
+Scope boundary approved on 2026-10-26: beginner Python through visual farm activities, Chapter 1 only. Product experience approved on 2026-10-26: explanations/examples, learner-written Python, 10 tasks, saved progress, one-time rewards and error feedback. Pending visual acceptance, technical-spec approval and test/submission verification remain separate.
 
 ## Learning journey
-Mission before code. Entry walks Mochi into the grounds without requiring unfamiliar game calls. Each activity shows its purpose, explains the concept with an example, then opens practice. Examples/hints never overwrite learner code. First guided print has a starter; independent greeting starts blank and requires different words. print writes actual Python output; this game maps it to a board. Later variable bindings and game-provided farm tools are explicitly explained.
+Mission before code. Entry walks Mochi into the grounds without requiring unfamiliar game calls. Each activity shows its purpose, explains the concept with an example, then opens practice. Examples/hints never overwrite learner code. The first task combines a guided print example with the learner writing different words in a second print statement. print writes actual Python output; this game maps it to a board. Later variable bindings and game-provided farm tools are explicitly explained.
 
 Owner-requested journey refinement (2026-10-26, local review): each activity’s story, goal, concept explanation, example and learner editor appear together in one lesson workspace. Learners no longer need separate “Show me how” and “Let me try” screens. Feedback, Python output, farm changes, saved drafts and rewards keep their existing behavior. The post-success screen remains a clear checkpoint before continuing.
 
 ## Chapter1 sequence and Topic1 coverage
-1. Supported welcome: print, quotes, parentheses, case sensitivity.
-2. Independent welcome: First Hello and flower pin.
-3. Name the farm: string assignment, print with multiple items, assign before use.
-4. Label supplies: identifiers, reserved keywords, meaningful names, case sensitivity.
-5. Choose crop/quantity: strings/numbers, assignment/reassignment.
-6. Measure area: variables/expressions/multiplication, bounded display dimensions1–6 by1–4.
-7. Prepare ground: introduced game API arguments, scene response.
-8. Plant chosen seeds: reuse values, positive count within area.
-9. Morning script: comments/order/.py save/open/run; indentation introduction.
-10. Inspect crop: object references and real id(), stable only during object lifetime.
-11. Notebook-style two-cell Python session: first-cell value used by second, rerun, export .ipynb. Not falsely labeled Jupyter itself.
-12. Workbench: Python history/features/CPython/portability/libraries, IDE/IDLE and examples, official Python/Anaconda/Jupyter installation/launch guide, recap. Installing software is optional and not claimed performed by game.
+1. Combined welcome: retain a guided print example and author a different greeting (print, quotes, parentheses, case sensitivity).
+2. Name the farm: string assignment and using farm_name.
+3. Choose crop and quantity: valid variable naming, strings/numbers, assignment and reassignment.
+4. Measure area: expressions and multiplication, bounded dimensions.
+5. Prepare ground: game API arguments.
+6. Plant chosen seeds: reuse values and respect area.
+7. Morning script: comments, order, .py save/open/run and watering.
+8. Inspect crop: objects and real id(), stable only during object lifetime.
+9. Notebook-style two-cell Python session: shared values and .ipynb export.
+10. Workbench: setup guide and recap. Installing software remains optional.
 
 ## Visual language and layout
 Parchment workspace, forest-green panels, botanical gold accents and illustrated medallions are the approved journey direction. Use the approved close storybook composition and plush character; start with the neglected cottage, sad Mochi, dream bubble and guided visits before showing the full activity plan. The plot begins as wild ground. Sign/chest/current plant layers are functional vector art and subject to owner visual review. Farm remains focus: phone46% visible height, tablet62%, desktop large scene with right workspace. No all-ground grid/paving or movement prelude. Code LTR under Arabic RTL. Optional chime, mute and reduced-motion behavior. Captions convey success without sound.
 
 ## Rewards and progression
-First Hello requires independent greeting. Other badges: A Name of Our Own, Supplies Sorted, Room to Grow, First Sprouts, First Morning Ready. Unlock once per stable activity ID. Repeating/resetting code does not farm XP; hints/retries never subtract it. Rank is a chapter milestone, not arbitrary XP. Later ranks show locks; only full Chapter1 awards Farm Newcomer. Flower pin can equip/unequip and survives reload. Reward card has Continue/Return/Close. Full chapter =500XP under current checkpoint scheme.
+First Hello rewards the learner-authored second greeting in the combined welcome. Other badges: A Name of Our Own, Supplies Sorted, Room to Grow, First Sprouts, First Morning Ready. Unlock once per stable activity ID. Repeating/resetting code does not farm XP; hints/retries never subtract it. Rank is a chapter milestone, not arbitrary XP. Later ranks show locks; only full Chapter1 awards Farm Newcomer. Flower pin can equip/unequip and survives reload. Reward card has Continue/Return/Close. Full chapter =500XP under current checkpoint scheme.
 
 ## State and map
 Maintain existing old progress unchanged. New state includes completedIDs, drafts, values, output, world state, mute/language/pin. Homepage prefers valid new progress and scales restoration by12, not5. Signed-in merge preserves old fields under firstMorning; real-account verification pending. Storage errors visibly warn but do not block play. Other islands stay unavailable even after Chapter1 completes.
@@ -174,3 +172,27 @@ Owner requested persistent task numbering and progress during scrolling, renamin
 ## Sticky task progress and unified lessons deployed — 2026-10-26
 
 Owner authorized deployment of combined activity/practice, sticky task counter and progress bar, and Tasks labels. Commit 8529bf6 was deployed with manual Pages workflow run 40381931562 (Success): https://github.com/mochi-coding-lab/mochi-coding-lab.github.io/actions/runs/40381931562 . Live first-lesson.html and JavaScript return HTTP 200 and match the approved build. Review URL: https://mochi-coding-lab.github.io/first-lesson.html?v=8529bf6 . Manual-only deploy workflow remains in place. Hands-on scrolling, activity progression, and mobile review remain learner checks.
+
+
+## Chapter 1 completion celebration — 2026-10-26
+
+Owner requested that completing the twelfth Chapter 1 task trigger a large celebration and an Island 1 / Farm Newcomer window, followed by guidance to the existing rewards view. Locally implemented a new completion dialog with animated medal/starburst, rank name and 500 XP, plus a “See my rewards” transition that opens the existing rewards collection and animates/highlights the earned Farm Newcomer card and collection button. First Hello/flower-pin reward flow remains intact; the rank is awarded only when all twelve tasks are completed. Reduced-motion CSS keeps the reward clear without animation. This is local only; hands-on review and publication are pending.
+
+
+## Remove repeated task story — 2026-10-26
+
+Owner said the twelve tasks feel repetitive and asked to merge lessons or shorten them. The combined lesson screen rendered the same activity story in Mochi speech bubble and again beside the editor. Removed the duplicate: Mochi carries the story, followed once by the goal, explanation, example and editor. This shortens the presentation without changing task sequence, Python requirements, stable IDs, progress or rewards. The change is local and awaits owner review.
+
+## Current shorter Chapter 1 task sequence — 2026-10-26
+The owner asked to remove repetitive tasks. The local plan now has10 tasks while retaining distinct Python ideas:
+1. Welcome visitors: keep a guided print example, then write a different greeting (print, strings, parentheses, case).
+2. Name the farm: assign and use farm_name.
+3. Choose crop and seed count: strings, numbers, assignment and valid variable naming; the separate label drill is removed.
+4. Measure the bed: expressions and multiplication.
+5. Prepare the bed: game API arguments.
+6. Plant seeds: reuse values and respect plot limits.
+7. Save the morning: comments, statement order, .py scripts and watering.
+8. Inspect values: Python objects and id().
+9. Use the notebook: shared state across two cells and .ipynb export.
+10. Take-home workbench and recap.
+The repeated welcome and variable-name activities are combined/removed. XP remains unchanged at400 task XP plus100 chapter-completion XP; the final reward still requires every current task. Old browser/account saves retain completed stable IDs, drafts and rewards; old numeric task positions are translated to the shorter order. This is a local implementation. New curriculum regression and owner review are pending; this is not published.

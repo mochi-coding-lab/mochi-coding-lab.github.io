@@ -8,14 +8,14 @@ updated: 2026-10-26
 
 ## Planning review — 2026-10-26
 - [x] Owner approved the scope boundary: beginner Python through visual farm activities, Chapter 1 only.
-- [x] Owner approved current PRD experience: explanations/examples, learner-written Python, 12 activities, saved progress, one-time rewards and error feedback (2026-10-26).
+- [x] Owner approved current PRD experience: explanations/examples, learner-written Python, 10 tasks, saved progress, one-time rewards and error feedback (2026-10-26).
 - [x] Owner approved current technical spec including PWA addition (2026-10-26).
 Scope approval does not establish visual acceptance, testing completion, preview integration or submission readiness.
 
 ## Chapter1 implementation
 - [x] Approved parchment/forest-green journey visual language in Chapter1.
 - [x] Mission, explanation, supported practice and independent greeting before game APIs.
-- [x] Twelve Topic1 activities and full supporting workbench/setup content.
+- [x] Ten concise Topic1 tasks and full supporting workbench/setup content.
 - [x] Actual local Python runtime, meaningful validation and interruptible worker.
 - [x] Editable farm name, crop, supplies and dimensions; create/plant/water bed.
 - [x] First Hello, six achievement states,500XP maximum, chapter rank and locked later ranks.
@@ -26,7 +26,7 @@ Scope approval does not establish visual acceptance, testing completion, preview
 - [x] Self-hosted runtime assets/licenses and explicit public build allowlist.
 
 ## Verified automatically
-- [x] Real Chromium all12 activities and chapter completion.
+- [x] Real Chromium all12 activities and chapter completion (historical build; current 10-task curriculum regression pending).
 - [x] Wrong capitalization and invalid/hardcoded learning answers cannot complete activities.
 - [x] Real Python notebook values and id output; .py download/open and .ipynb export.
 - [x] Reload, pin equipment, no duplicate XP, existing record preservation.
@@ -243,3 +243,39 @@ Owner requested persistent task numbering and progress during scrolling, renamin
 ## Sticky task progress and unified lessons deployed — 2026-10-26
 
 Owner authorized deployment of combined activity/practice, sticky task counter and progress bar, and Tasks labels. Commit 8529bf6 was deployed with manual Pages workflow run 40381931562 (Success): https://github.com/mochi-coding-lab/mochi-coding-lab.github.io/actions/runs/40381931562 . Live first-lesson.html and JavaScript return HTTP 200 and match the approved build. Review URL: https://mochi-coding-lab.github.io/first-lesson.html?v=8529bf6 . Manual-only deploy workflow remains in place. Hands-on scrolling, activity progression, and mobile review remain learner checks.
+
+
+## Chapter 1 completion celebration — 2026-10-26
+
+Owner requested that completing the twelfth Chapter 1 task trigger a large celebration and an Island 1 / Farm Newcomer window, followed by guidance to the existing rewards view. Locally implemented a new completion dialog with animated medal/starburst, rank name and 500 XP, plus a “See my rewards” transition that opens the existing rewards collection and animates/highlights the earned Farm Newcomer card and collection button. First Hello/flower-pin reward flow remains intact; the rank is awarded only when all twelve tasks are completed. Reduced-motion CSS keeps the reward clear without animation. This is local only; hands-on review and publication are pending.
+
+- [ ] Owner reviews final Farm Newcomer celebration and reward transition locally.
+
+
+## Remove repeated task story — 2026-10-26
+
+Owner said the twelve tasks feel repetitive and asked to merge lessons or shorten them. The combined lesson screen rendered the same activity story in Mochi speech bubble and again beside the editor. Removed the duplicate: Mochi carries the story, followed once by the goal, explanation, example and editor. This shortens the presentation without changing task sequence, Python requirements, stable IDs, progress or rewards. The change is local and awaits owner review.
+
+- [ ] Owner reviews shorter lesson panel and confirms the repeated text is gone.
+
+## Shorter task revision — 2026-10-26
+- [x] Remove the duplicate guided/independent welcome handoff by combining both prints in the welcome task.
+- [x] Retire the separate supply-label drill and explain valid identifiers inside crop/seed selection.
+- [x] Keep distinct farm naming, measurements, game APIs, planting, scripts, object identity, notebook and recap tasks.
+- [x] Translate old task indices and preserve saved progress/drafts/rewards where the prior activity is still represented.
+- [ ] Run the updated 10-task browser regression and owner review.
+- [ ] Rebuild public preview and review locally.
+- [ ] Publication remains unrequested and manual-only.
+## Current shorter Chapter 1 task sequence — 2026-10-26
+The owner asked to remove repetitive tasks. The local plan now has10 tasks while retaining distinct Python ideas:
+1. Welcome visitors: keep a guided print example, then write a different greeting (print, strings, parentheses, case).
+2. Name the farm: assign and use farm_name.
+3. Choose crop and seed count: strings, numbers, assignment and valid variable naming; the separate label drill is removed.
+4. Measure the bed: expressions and multiplication.
+5. Prepare the bed: game API arguments.
+6. Plant seeds: reuse values and respect plot limits.
+7. Save the morning: comments, statement order, .py scripts and watering.
+8. Inspect values: Python objects and id().
+9. Use the notebook: shared state across two cells and .ipynb export.
+10. Take-home workbench and recap.
+The repeated welcome and variable-name activities are combined/removed. XP remains unchanged at400 task XP plus100 chapter-completion XP; the final reward still requires every current task. Old browser/account saves retain completed stable IDs, drafts and rewards; old numeric task positions are translated to the shorter order. This is a local implementation. New curriculum regression and owner review are pending; this is not published.

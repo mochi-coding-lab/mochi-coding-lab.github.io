@@ -16,11 +16,11 @@ Usability refinement confirmed 2026-10-26: show each activity’s instruction an
 
 ## Current build
 - One responsive world map; only Island1 playable, four future islands locked/upcoming.
-- Chapter1 at first-lesson.html now has12 activities: supported greeting, independent First Hello, farm name, supply identifiers, crop/seeds, area, prepare bed, plant, morning script/comments, object identity, notebook cells, tools/setup recap.
+- Chapter1 at first-lesson.html now has10 tasks: combined guided/independent welcome, farm name, crop/seeds and variable naming, area, prepare bed, plant, morning script, object identity, notebook cells and tools/setup recap.
 - Real browser-side Python via self-hosted Pyodide0.27.7 / Python3.12.7 in a terminable Worker. Existing bounded engine remains only for historical prototypes/tests.
 - Scene: close storybook abandoned farm with matching plush Mochi, emotional arrival/dream and guided tour; learner actions prepare/plant/water the initially wild patch. Flower-pin reward, name sign and supply chest. Current sign/chest/plants use simple vector layers; richer standalone object art remains polish, not fully finished asset set.
 - Phone visible farm above scrolling workspace; tablet760–1199px farm62% height with controls underneath; desktop sidebar. English/Arabic, Python LTR, visual-viewport sizing.
-- First Hello after independent greeting:50XP once, illustrated badge, sound/sparkles, optional equippable flower pin. Six Chapter1 achievement statuses, current/locked rank collection. Eight50XP checkpoints plus100XP chapter completion bonus =500XP. Farm Newcomer requires all12 activities; later ranks locked.
+- First Hello after the learner-authored second greeting in the combined welcome:50XP once, illustrated badge, sound/sparkles, optional equippable flower pin. Six Chapter1 achievement statuses, current/locked rank collection. Eight50XP checkpoints plus100XP chapter completion bonus =500XP. Farm Newcomer requires all10 tasks; later ranks locked.
 - Guest progress/drafts/rewards persist separately under mochi.farm.chapter1.v2; old five-step saves remain intact. Account bridge merges firstMorning into prior progress record; actual real-account cross-session validation still pending.
 
 ## Boundaries
@@ -166,3 +166,27 @@ Owner requested persistent task numbering and progress during scrolling, renamin
 ## Sticky task progress and unified lessons deployed — 2026-10-26
 
 Owner authorized deployment of combined activity/practice, sticky task counter and progress bar, and Tasks labels. Commit 8529bf6 was deployed with manual Pages workflow run 40381931562 (Success): https://github.com/mochi-coding-lab/mochi-coding-lab.github.io/actions/runs/40381931562 . Live first-lesson.html and JavaScript return HTTP 200 and match the approved build. Review URL: https://mochi-coding-lab.github.io/first-lesson.html?v=8529bf6 . Manual-only deploy workflow remains in place. Hands-on scrolling, activity progression, and mobile review remain learner checks.
+
+
+## Chapter 1 completion celebration — 2026-10-26
+
+Owner requested that completing the twelfth Chapter 1 task trigger a large celebration and an Island 1 / Farm Newcomer window, followed by guidance to the existing rewards view. Locally implemented a new completion dialog with animated medal/starburst, rank name and 500 XP, plus a “See my rewards” transition that opens the existing rewards collection and animates/highlights the earned Farm Newcomer card and collection button. First Hello/flower-pin reward flow remains intact; the rank is awarded only when all twelve tasks are completed. Reduced-motion CSS keeps the reward clear without animation. This is local only; hands-on review and publication are pending.
+
+
+## Remove repeated task story — 2026-10-26
+
+Owner said the twelve tasks feel repetitive and asked to merge lessons or shorten them. The combined lesson screen rendered the same activity story in Mochi speech bubble and again beside the editor. Removed the duplicate: Mochi carries the story, followed once by the goal, explanation, example and editor. This shortens the presentation without changing task sequence, Python requirements, stable IDs, progress or rewards. The change is local and awaits owner review.
+
+## Current shorter Chapter 1 task sequence — 2026-10-26
+The owner asked to remove repetitive tasks. The local plan now has10 tasks while retaining distinct Python ideas:
+1. Welcome visitors: keep a guided print example, then write a different greeting (print, strings, parentheses, case).
+2. Name the farm: assign and use farm_name.
+3. Choose crop and seed count: strings, numbers, assignment and valid variable naming; the separate label drill is removed.
+4. Measure the bed: expressions and multiplication.
+5. Prepare the bed: game API arguments.
+6. Plant seeds: reuse values and respect plot limits.
+7. Save the morning: comments, statement order, .py scripts and watering.
+8. Inspect values: Python objects and id().
+9. Use the notebook: shared state across two cells and .ipynb export.
+10. Take-home workbench and recap.
+The repeated welcome and variable-name activities are combined/removed. XP remains unchanged at400 task XP plus100 chapter-completion XP; the final reward still requires every current task. Old browser/account saves retain completed stable IDs, drafts and rewards; old numeric task positions are translated to the shorter order. This is a local implementation. New curriculum regression and owner review are pending; this is not published.
