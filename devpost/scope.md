@@ -189,4 +189,4 @@ The owner asked to remove repetitive tasks. The local plan now has10 tasks while
 8. Inspect values: Python objects and id().
 9. Use the notebook: shared state across two cells and .ipynb export.
 10. Take-home workbench and recap.
-The repeated welcome and variable-name activities are combined/removed. XP remains unchanged at400 task XP plus100 chapter-completion XP; the final reward still requires every current task. Old browser/account saves retain completed stable IDs, drafts and rewards; old numeric task positions are translated to the shorter order. This is a local implementation. New curriculum regression and owner review are pending; this is not published.
+The repeated welcome and variable-name activities are combined/removed. XP remains unchanged at400 task XP plus100 chapter-completion XP; the final reward still requires every current task. Old browser/account saves retain completed stable IDs, drafts and rewards; old numeric task positions are translated to the shorter order. The 10-task build is deployed. The updated full-lesson browser regression and owner device review remain pending.

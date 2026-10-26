@@ -265,7 +265,7 @@ Owner said the twelve tasks feel repetitive and asked to merge lessons or shorte
 - [x] Translate old task indices and preserve saved progress/drafts/rewards where the prior activity is still represented.
 - [ ] Run the updated 10-task browser regression and owner review.
 - [ ] Rebuild public preview and review locally.
-- [ ] Publication remains unrequested and manual-only.
+- [x] Manual Pages publication succeeded for commit a3d3376 (run40387188271); workflow remains manual-only.
 ## Current shorter Chapter 1 task sequence — 2026-10-26
 The owner asked to remove repetitive tasks. The local plan now has10 tasks while retaining distinct Python ideas:
 1. Welcome visitors: keep a guided print example, then write a different greeting (print, strings, parentheses, case).
@@ -278,4 +278,11 @@ The owner asked to remove repetitive tasks. The local plan now has10 tasks while
 8. Inspect values: Python objects and id().
 9. Use the notebook: shared state across two cells and .ipynb export.
 10. Take-home workbench and recap.
-The repeated welcome and variable-name activities are combined/removed. XP remains unchanged at400 task XP plus100 chapter-completion XP; the final reward still requires every current task. Old browser/account saves retain completed stable IDs, drafts and rewards; old numeric task positions are translated to the shorter order. This is a local implementation. New curriculum regression and owner review are pending; this is not published.
+The repeated welcome and variable-name activities are combined/removed. XP remains unchanged at400 task XP plus100 chapter-completion XP; the final reward still requires every current task. Old browser/account saves retain completed stable IDs, drafts and rewards; old numeric task positions are translated to the shorter order. The 10-task build is deployed. The updated full-lesson browser regression and owner device review remain pending.
+
+## 10-task release deployed - 2026-10-26
+- [x] Published commit a3d3376 to the Mochi Pages repository main branch.
+- [x] GitHub Pages run40387188271 completed successfully.
+- [x] Live first-lesson.html, manifest, farm-chapter.js, farm-ambience.js and farm-supply-visuals.js return HTTP200 and match the local public build.
+- [x] Four public-map/island/nature/water checks passed.
+- [ ] Full 10-task Python/browser regression and owner physical-device review remain pending.
